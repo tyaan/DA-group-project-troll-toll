@@ -2,7 +2,7 @@
 
 ## Week 7 Large group project
 
-**We are a Wellington-based SaaS (Software as a service) product company, and we already successfully leveraged the NZ / AUS market with our flagship product. After several years of making a good profit from it for our company, we want to leverage the market in Auckland a little bit more specifically and grow further.
+**We are a Wellington-based SaaS (Software as a service) product company***, and we already successfully leveraged the NZ / AUS market with our flagship product. After several years of making a good profit from it for our company, we want to leverage the market in Auckland a little bit more specifically and grow further.
 
 Our market research indicated that the cost of living is on the rise, and house prices are skyrocketing. Fortunately, for the rest of NZ, we are safe from traffic monetisation, unlike our friends in Auckland who have to deal with the trolls that live under their landmark bridges. It's tough for a troll in 2024. There is a lot of competition and not a lot of good resources for trolls. Trolls are are the hunt for smarter, more digital ways to optimize their toll revenue. That's where we come in with our *Bridge Troll Toll Calculator* app.
 
