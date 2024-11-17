@@ -2,9 +2,11 @@
 
 ## Week 7 Large group project
 
-The cost of living is on the rise, and house prices are skyrocketing. Fortunately, for the rest of NZ, we are safe from traffic monetisation, unlike our friends in Auckland who have to deal with the trolls that live under their landmark bridges. It's tough for a troll in 2024. There is a lot of competition and not a lot of good resources for trolls. Trolls are are the hunt for smarter, more digital ways to optimize their toll revenue. That's where we come in with our *Bridge Troll Toll Calculator* app.
+**We are a Wellington-based SaaS (Software as a service) product company, and we already successfully leveraged the NZ / AUS market with our flagship product. After several years of making a good profit from it for our company, we want to leverage the market in Auckland a little bit more specifically and grow further.
 
-The goal of this app is to provide a platform for Auckland-based bridge troll toll-takers to make informed decisions on which bridge to live under and optimize their toll revenue by analyzing live data from sources such as **Waka Kotahi: Auckland Traffic API**. You can use this or similar APIs to fetch real-time data on/near bridge locations, allowing toll operators to assess the best times of the day for collections and other factors influencing toll collection.
+Our market research indicated that the cost of living is on the rise, and house prices are skyrocketing. Fortunately, for the rest of NZ, we are safe from traffic monetisation, unlike our friends in Auckland who have to deal with the trolls that live under their landmark bridges. It's tough for a troll in 2024. There is a lot of competition and not a lot of good resources for trolls. Trolls are are the hunt for smarter, more digital ways to optimize their toll revenue. That's where we come in with our *Bridge Troll Toll Calculator* app.
+
+The goal of this app is to provide a platform for Auckland-based bridge troll toll-takers to make informed decisions on which bridge to live under and optimize their toll revenue by analyzing live data from sources such as **Google Maps API**. You can use this or similar APIs to fetch real-time data on/near bridge locations, allowing toll operators to assess the best times of the day for collections and other factors influencing toll collection. Just be sure to research the API first, as sometimes they don’t come cheap (and our company does not come with a budget!).
 
 The extended timeframe for this project presents an opportunity for comprehensive planning and a deeper understanding of how you collaborate in groups. Use this time wisely to engage in discussions about your stress profiles, articulate your learning goals, and define roles within the team. Consider incorporating proper wireframes or designs using tools such as Figma, and take advantage of this phase to craft thorough documentation for the project. This strategic approach will not only enhance the efficiency of your teamwork but also contribute to the overall success of the project.  
 
@@ -40,6 +42,16 @@ A boilerplate is already set up for you with everything you will need to get sta
 There is already some started data in the database on the Auckland bridges (you may wish to add more fields as you go or if you wish to add data from external APIs). 
 
 In the github projects linked to this repo, there are starter tasks to ensure good planning and fullstack features for each pair linked to each user story. 
+
+
+### Branding & Wireframes
+
+As a well-established SaaS company, we already have a solid product vision and brand in place. Our talented product designer created the initial wireframes for the new product, but after a lightning-fast promotion to Chief Product Officer, they left the rest in the capable hands of the Product Owner to "own the vision." While adjustments can certainly be made, it’s probably a good idea to stick close to the existing brand and vision to keep everything aligned... unless you’re feeling adventurous, of course!
+
+[Figma - Troll Toll Brand & Low-Fi Wireframes](https://www.figma.com/design/B01oYnjjS5hn1X5JV5RtAP/Trolls-Toll-Calculator?node-id=1-3&t=pngDauu1naR9gR1X-1)
+
+### Styling & CSS
+Feel free to make use of CSS libraries (e.g. Tailwind) for styling, but just a heads-up: the repo is set up for SASS (Syntactically Awesome Style Sheets), not regular CSS. So, while Tailwind can be integrated, make sure you’re working within the SASS structure to keep things nice and tidy!
 
 
 ## User Stories
