@@ -2,9 +2,9 @@
 
 ## Week 7 Large group project
 
-**We are a Wellington-based SaaS (Software as a service) product company***, and we already successfully leveraged the NZ / AUS market with our flagship product. After several years of making a good profit from it for our company, we want to leverage the market in Auckland a little bit more specifically and grow further.
+**We are a Wellington-based SaaS (Software as a service) product company**, and we already successfully leveraged the NZ / AUS market with our flagship product. After several years of making a good profit from it for our company, we want to leverage the market in Auckland a little bit more specifically and grow further.
 
-Our market research indicated that the cost of living is on the rise, and house prices are skyrocketing. Fortunately, for the rest of NZ, we are safe from traffic monetisation, unlike our friends in Auckland who have to deal with the trolls that live under their landmark bridges. It's tough for a troll in 2024. There is a lot of competition and not a lot of good resources for trolls. Trolls are are the hunt for smarter, more digital ways to optimize their toll revenue. That's where we come in with our *Bridge Troll Toll Calculator* app.
+Our market research indicated that the cost of living is on the rise, and house prices are skyrocketing. Fortunately, for the rest of NZ, we are safe from traffic monetisation, unlike our friends in Auckland who have to deal with the trolls that live under their landmark bridges. It's tough for a troll in 2024. There is a lot of competition and not a lot of good resources for trolls. Trolls are on the hunt for smarter, more digital ways to optimize their toll revenue. That's where we come in with our *Bridge Troll Toll Calculator* app.
 
 The goal of this app is to provide a platform for Auckland-based bridge troll toll-takers to make informed decisions on which bridge to live under and optimize their toll revenue by analyzing live data from sources such as **Google Maps API**. You can use this or similar APIs to fetch real-time data on/near bridge locations, allowing toll operators to assess the best times of the day for collections and other factors influencing toll collection. Just be sure to research the API first, as sometimes they don’t come cheap (and our company does not come with a budget!).
 
@@ -51,12 +51,12 @@ As a well-established SaaS company, we already have a solid product vision and b
 [Figma - Troll Toll Brand & Low-Fi Wireframes](https://www.figma.com/design/B01oYnjjS5hn1X5JV5RtAP/Trolls-Toll-Calculator?node-id=1-3&t=pngDauu1naR9gR1X-1)
 
 ### Styling & CSS
-Feel free to make use of CSS libraries (e.g. Tailwind) for styling, but just a heads-up: the repo is set up for SASS (Syntactically Awesome Style Sheets), not regular CSS. So, while Tailwind can be integrated, make sure you’re working within the SASS structure to keep things nice and tidy!
+This repository has Tailwind CSS all set up for you, so you are more than welcome to use this to speed up your styling process.
 
 
 ## User Stories
 
-*The product owner and team might have reason to change/update these to align with client needs or available data. Please make sure you confirm with your team lead (Gaby) first.*
+*The product owner and team might have reason to change/update these to align with client needs or available data. Please make sure you confirm with your team lead (Corina) first.*
 
 ### MVP
 
