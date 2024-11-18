@@ -90,9 +90,8 @@ As a registered toll operator user:
 
 ## Pull Requests: merging to main/ dev branch checklist
 
-Before you merge to main, the team-lead (Gaby) will run through the following checklist before accepting your pull request:
+Before you merge to main, the team-lead (Corina) will run through the following checklist before accepting your pull request:
 
-* 80% test coverage 
 * file and function naming conventions are maintained across the app
 * errors are well handled
 * no sensitive data should be exposed on the client side
