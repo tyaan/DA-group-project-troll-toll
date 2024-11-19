@@ -1,5 +1,3 @@
-// File: client/routes.tsx
-
 import { createRoutesFromElements, Route } from 'react-router-dom'
 import App from './components/App.tsx'
 import Login from './components/Login'

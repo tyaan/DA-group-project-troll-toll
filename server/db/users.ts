@@ -1,16 +1,27 @@
-const db = require('./connection') // Your database connection
+import db from './connection';  // Assuming db is being exported as the default from 'connection'
 
-// Get a user by their Auth0 sub
-function getUserByAuth0Sub(auth0_sub) {
-  return db('users').where({ auth0_sub }).first()
+
+type User = {
+  id?: number;
+  auth0_sub: string;
+  name: string;
+  last_name: string;
+  email: string;
+  picture: string;
+  active_bridge?: number;
+  fav_bridges?: number;
+  total_toll?: number;
+};
+
+function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> {
+  return db('users').where({ auth0_sub }).first();
 }
 
-// Add a new user
-function addUser(user) {
-  return db('users').insert(user).returning('*')
+function addUser(user: User): Promise<User[]> {
+  return db('users').insert(user).returning('*');
 }
 
-module.exports = {
+export {
   getUserByAuth0Sub,
   addUser,
-}
+};
