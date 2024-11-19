@@ -3,8 +3,8 @@
 function Footer() {
   return (
     <footer className="footer">
-    <p>&copy; Troll tolls calculator 2024</p>
-  </footer>
+      <p>&copy; Troll toll calculator 2024</p>
+    </footer>
   )
 }
 
