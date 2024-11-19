@@ -12,7 +12,8 @@ export async function up(knex) {
 
   await knex.schema.createTable('toll_analytics', (table) => {
     table.integer('id').primary()
-    table.integer('bridgeId')
+    table.integer('bridge_id')
+    table.integer('user_id')
     table.decimal('revenue')
     table.datetime('timestamp')
   })

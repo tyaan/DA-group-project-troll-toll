@@ -1,27 +1,34 @@
 import db from './connection';  // Assuming db is being exported as the default from 'connection'
+import { User, UserData } from '../../models/user';
 
-
-type User = {
-  id?: number;
-  auth0_sub: string;
-  name: string;
-  last_name: string;
-  email: string;
-  picture: string;
-  active_bridge?: number;
-  fav_bridges?: number;
-  total_toll?: number;
-};
-
-function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> {
-  return db('users').where({ auth0_sub }).first();
+export async function getUserByAuth0Sub(auth0Sub: string): Promise<User | undefined> {
+  try {
+    console.log(`Attempting to fetch user with auth0_sub: ${auth0Sub}`);
+    return await db('users').where({ auth0_sub: auth0Sub }).first();
+  } catch (err) {
+    console.error('Error fetching user:', err);
+    throw err;
+  }
 }
 
-function addUser(user: User): Promise<User[]> {
+export async function addUser(user: User): Promise<User[]> {
   return db('users').insert(user).returning('*');
 }
 
-export {
-  getUserByAuth0Sub,
-  addUser,
-};
+export async function updateUser(userData: UserData): Promise<User> {
+  return await db('users').where({"auth0_sub": userData.auth0Sub}).first()
+    .update({
+      "auth0_sub": userData.auth0Sub, 
+      "name": userData.name, 
+      "last_name": userData.lastName, 
+      "email": userData.email, 
+      "picture": userData.picture, 
+      "activeBridge": userData.activeBridge, 
+      "fav_bridges": userData.favBridges, 
+      "total_toll": userData.totalToll
+    }, ['*'])
+}
+
+export async function deleteUserByAuth0Sub(auth0Sub: string): Promise<void> {
+  return await db('users').where({"auth0_sub": auth0Sub}).del()
+}

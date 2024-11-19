@@ -3,16 +3,20 @@ import * as Path from 'node:path';
 
 import bridgeRoutes from './routes/bridge';
 import userRoutes from './routes/users'; // Import user routes
+import tollRoutes from './routes/toll'
 
 const server = express();
 
 server.use(express.json());
 
-// Bridge routes
+// Bridge tabl routes
 server.use('/api/v1/bridges', bridgeRoutes);
 
-// User routes
+// User table routes
 server.use('/api/v1/users', userRoutes); // Attach user routes
+
+// Toll table routes
+server.use('/api/v1/toll', tollRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   server.use(express.static(Path.resolve('public')));
