@@ -1,5 +1,5 @@
 export async function seed(knex) {
-  await knex('bridges').insert([
+  await knex('bridges', 'toll_analytics').insert([
     {
       name: 'Auckland Harbour Bridge',
       location: 'Auckland Harbour',
