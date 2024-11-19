@@ -1,39 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-nav{
+/* PAGES */
+/* h1,
+h2,
+h3 {
+  font-family: 'Bangers', sans-serif;
+} */
+
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 20px;
   height: 100px;
-  border-bottom: 1px solid black;
+  background-color: #9dccf1;
 }
 
 .navigation-title {
+  font-family: 'Bangers', sans-serif;
   flex-grow: 1;
   text-align: center;
-  font-size: 24px;
+  font-size: 50px;
 }
 
-main{
+main {
   min-height: calc(100vh - 160px);
 }
 
-footer{
-  height: 60px;
-  border-top: 1px solid black;
-}
-
-header{
-  padding: 80px 0;
-  background-color: #eee;
-}
-
-.main-content{
+.main-content {
   padding: 40px 30px;
+}
+
+header {
+  padding: 40px 0;
+  background-color: white;
+}
+
+.header-title {
+  font-size: x-large;
+  font-family: 'Bangers', sans-serif;
+  text-align: center;
+}
+
+footer {
+  height: 80px;
+  padding: 20px 0;
+  text-align: center;
+  background-color: #9dccf1;
+}
+
+.container-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  text-align: center;
+  color: #333;
+  padding: 15px;
+  margin: 20px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  max-width: 600px;
+  word-wrap: break-word;
 }
 
 /* ICON */
@@ -53,99 +86,190 @@ header{
 
 /* Login button */
 .login-btn {
-  background-color: #1D7ECA;
+  background-color: #1d7eca;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   display: flex;
   gap: 10px;
   justify-content: flex-end;
 }
 
-.login-btn:hover{
-  background-color: #03045E;
+.login-btn:hover {
+  background-color: #03045e;
 }
 
-.login-btn:focus{
-outline: none;
-box-shadow: 0 0 0 2px #1D7ECA;
+.login-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #1d7eca;
 }
 
 /* Sign up button */
 .signup-btn {
-  background-color: #FFC505;
-  color: #03045E;
+  background-color: #ffc505;
+  color: #03045e;
   padding: 0.5rem 1.5rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
   display: flex;
   gap: 10px;
   justify-content: flex-end;
 }
 
 .signup-btn:hover {
-  background-color: #FFC505;
+  background-color: #d29a2b;
 }
 
 .signup-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #FFC505;
+  box-shadow: 0 0 0 2px #ffc505;
 }
 
 /* General button */
 .general-btn {
-  background-color: #9DCCF1;
-  color: #03045E;
+  background-color: #9dccf1;
+  color: #03045e;
   padding: 0.5rem 1.5rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .general-btn:hover {
-  background-color: #69B1E9;
+  background-color: #69b1e9;
 }
 
 .general-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #9DCCF1;
+  box-shadow: 0 0 0 2px #9dccf1;
 }
 
-
-/* bridge table */
-
-.top-row{
-  background-color: #eee;
+/* Action buttons (inside actions-col) ?*/
+/* .actions-col button {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px; 
 }
 
-.row{
-  display: flex;
+.actions-col button:hover {
+  background-color: #45a049; 
+}
+
+.actions-col button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(72, 157, 72, 0.6); /
+} */
+
+/* Bridge table */
+.bridge-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Bridge title styling */
+.bridge-list-title {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Styling for individual bridge item rows */
+.bridge-items {
+  margin-top: 20px;
+}
+
+/* Added to existing bridge table */
+.top-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 200px 250px 300px;
   gap: 10px;
+  background-color: #ceeaff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  text-align: left;
+  border-radius: 5px 5px 0 0;
 }
 
-.icon-col{
-  width: 70px;
+.top-row div {
+  padding: 5px;
 }
 
-.name-col{
-  width: 270px;
+.row {
+  display: grid;
+  grid-template-columns: 70px 1fr 200px 250px 300px;
+  gap: 10px;
+  padding: 12px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
 }
 
-.status-col{
-  width: 200px;
+.row:hover {
+  background-color: #e6f7ff;
+}
+.icon-col {
   text-align: center;
 }
 
-.owner-col{
-  width: 250px;
+.name-col {
+  font-size: 1.2rem;
+  color: #333;
 }
 
-.actions-col{
-  width: 300px;
+.status-col {
+  text-align: center;
+  font-size: 1rem;
+  color: #444;
+}
+
+.owner-col {
+  font-size: 1rem;
+  text-align: center;
+  color: #444;
+}
+
+.actions-col {
+  font-size: 1rem;
+  text-align: center;
+  color: #444;
+}
+
+/* Styling for alternate row colors */
+.row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Space around the top row and rows */
+.bridge-items .row,
+.bridge-items .top-row {
+  border-radius: 5px;
+}
+
+/* Additional spacing between items */
+.bridge-items {
+  margin-top: 20px;
 }
