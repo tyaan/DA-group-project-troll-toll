@@ -13,7 +13,7 @@ function Navigation() {
         <button className="signup-btn">Sign up</button>
       </div>
     </nav>
-  );  
+  )
 }
 
 export default Navigation
