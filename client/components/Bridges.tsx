@@ -20,7 +20,7 @@ export default function Bridges() {
       <h1>Auckland Bridges🧌</h1>
       <ul>
         {bridges.map((br) => {
-          return <li>{br.name}</li>
+          return <li key={br.name}>{br.name}</li>
         })}
       </ul>
     </>

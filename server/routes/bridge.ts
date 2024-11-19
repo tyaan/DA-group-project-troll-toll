@@ -1,6 +1,6 @@
 import express from 'express'
-import { Bridge } from '../../models/bridge.ts'
-import { JwtRequest } from '../auth0.ts'
+import { Bridge, BridgeData } from '../../models/bridge.ts'
+// import { JwtRequest } from '../auth0.ts'
 
 import * as db from '../db/bridge.ts'
 
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const newBridge: Bridge = req.body
+  const newBridge: BridgeData = req.body
   try {
     const createdBridge = await db.addBridge(newBridge)
     res.status(201).json(createdBridge)

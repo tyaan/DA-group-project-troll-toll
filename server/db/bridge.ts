@@ -1,5 +1,5 @@
 import db from './connection.ts'
-import { Bridge } from '../../models/bridge.ts'
+import { Bridge, BridgeData } from '../../models/bridge.ts'
 
 export async function getBridges(): Promise<Bridge[]> {
   return await db('bridges').select(
@@ -32,7 +32,7 @@ export async function getBridgeById(id: number): Promise<Bridge | null> {
   return bridge || null
 }
 
-export async function addBridge(bridge: Bridge): Promise<Bridge> {
+export async function addBridge(bridge: BridgeData): Promise<Bridge> {
   const [newBridge] = await db('bridges').insert(bridge).returning('*')
   return newBridge
 }
