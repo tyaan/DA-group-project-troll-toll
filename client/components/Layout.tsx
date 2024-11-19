@@ -1,15 +1,13 @@
 import { Outlet } from 'react-router-dom'
+import Navigation from './Navigation'
+import Footer from './Footer'
 
 export default function Layout() {
   return (
     <>
-      <header>
-        <h1>Large Thumb Digital</h1>
-      </header>
-      <main>
-        <Outlet />
-      </main>
-      <footer></footer>
+      <Navigation/>
+      <Outlet/>
+      <Footer/>
     </>
   )
 }
