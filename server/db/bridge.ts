@@ -2,16 +2,38 @@ import db from './connection.ts'
 import { Bridge } from '../../models/bridge.ts'
 
 export async function getBridges(): Promise<Bridge[]> {
-  return db('bridges').select('')
+  return await db('bridges').select(
+    'id',
+    'name',
+    'location',
+    'type',
+    'year_built as yearBuilt',
+    'length_meters as lengthMeters',
+    'lanes',
+    'added_by_user as addedByUser',
+  )
 }
 
 export async function getBridgeById(id: number): Promise<Bridge | null> {
-  const bridge = await db('bridges').where({ id }).first()
+  const bridge = await db('bridges')
+    .where({ id })
+    .first()
+    .select(
+      'id',
+      'name',
+      'location',
+      'type',
+      'year_built as yearBuilt',
+      'length_meters as lengthMeters',
+      'lanes',
+      'added_by_user as addedByUser',
+    )
+
   return bridge || null
 }
 
 export async function addBridge(bridge: Bridge): Promise<Bridge> {
-  const [newBridge] = await db('bridges').insert(bridge).returning('')
+  const [newBridge] = await db('bridges').insert(bridge).returning('*')
   return newBridge
 }
 

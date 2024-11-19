@@ -1,5 +1,3 @@
-import knexfile from '../knexfile'
-
 export async function up(knex) {
   await knex.schema.createTable('bridges', (table) => {
     table.increments('id').primary()
@@ -19,7 +17,7 @@ export async function up(knex) {
     table.datetime('timestamp')
   })
 
-  await knexfile.schema.createTable('users', (table) => {
+  await knex.schema.createTable('users', (table) => {
     table.integer('id').primary()
     table.string('auth0_sub')
     table.string('name')
