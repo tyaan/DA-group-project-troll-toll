@@ -13,12 +13,12 @@ export async function addToll(tollData: TollData): Promise<Toll | undefined> {
 }
 
 export async function getTolls(): Promise<Toll[] | undefined> {
-  return await db('toll_analytics').select(
-    "bridge_id as bridgeId", 
-    "user_id as userId", 
-    "revenue", 
-    "timestamp"
-  ) as Toll[]
+   return await db('toll_analytics').select(
+     "bridge_id as bridgeId", 
+     "user_id as userId", 
+     "revenue", 
+     "timestamp"
+   ) as Toll[]
 }
 
 export async function getTollsByBridgeId(bridgeId: number): Promise<Toll[] | undefined> {
