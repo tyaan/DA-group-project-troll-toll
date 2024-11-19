@@ -4,7 +4,7 @@ function Navigation() {
   return (
     <nav className="navigation">
       <div className="navigation-icon">
-        <img src="images/fav-icon-96x96.png" alt="Troll icon" />
+        <img src="/images/fav-icon-96x96.png" alt="Troll icon" />
       </div>
       <h1 className="navigation-title">Troll toll calculator</h1>
 
