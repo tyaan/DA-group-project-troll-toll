@@ -1,3 +1,151 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  height: 100px;
+  border-bottom: 1px solid black;
+}
+
+.navigation-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 24px;
+}
+
+main{
+  min-height: calc(100vh - 160px);
+}
+
+footer{
+  height: 60px;
+  border-top: 1px solid black;
+}
+
+header{
+  padding: 80px 0;
+  background-color: #eee;
+}
+
+.main-content{
+  padding: 40px 30px;
+}
+
+/* ICON */
+.navigation-icon img {
+  width: 70px;
+  height: auto;
+}
+
+/* BUTTONS */
+/* Auth buttons */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Login button */
+.login-btn {
+  background-color: #1D7ECA;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.login-btn:hover{
+  background-color: #03045E;
+}
+
+.login-btn:focus{
+outline: none;
+box-shadow: 0 0 0 2px #1D7ECA;
+}
+
+/* Sign up button */
+.signup-btn {
+  background-color: #FFC505;
+  color: #03045E;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.signup-btn:hover {
+  background-color: #FFC505;
+}
+
+.signup-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #FFC505;
+}
+
+/* General button */
+.general-btn {
+  background-color: #9DCCF1;
+  color: #03045E;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.general-btn:hover {
+  background-color: #69B1E9;
+}
+
+.general-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #9DCCF1;
+}
+
+
+/* bridge table */
+
+.top-row{
+  background-color: #eee;
+}
+
+.row{
+  display: flex;
+  gap: 10px;
+}
+
+.icon-col{
+  width: 70px;
+}
+
+.name-col{
+  width: 270px;
+}
+
+.status-col{
+  width: 200px;
+  text-align: center;
+}
+
+.owner-col{
+  width: 250px;
+}
+
+.actions-col{
+  width: 300px;
+}

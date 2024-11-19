@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
+import Navigation from './Navigation'
+import Footer from './Footer'
 import { useAuth0 } from '@auth0/auth0-react'
-
 export default function Layout() {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0()
 
@@ -8,7 +9,8 @@ export default function Layout() {
     <>
       <header>
         <h1>Large Thumb Digital</h1>
-        {isAuthenticated ? (
+      </header>
+      {isAuthenticated ? (
           <>
             <p>Welcome, {user?.given_name}</p>
             <button onClick={() => logout({ returnTo: window.location.origin })}>Log out</button>
@@ -16,11 +18,11 @@ export default function Layout() {
         ) : (
           <button onClick={() => loginWithRedirect()}>Log in</button>
         )}
-      </header>
       <main>
+        <Navigation/>
         <Outlet />
       </main>
-      <footer></footer>
+      <Footer/>
     </>
   )
 }
