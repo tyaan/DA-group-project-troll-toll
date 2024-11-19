@@ -1,4 +1,4 @@
-import Bridges from './Bridges'
+import Bridges from './Bridges.tsx'
 import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {

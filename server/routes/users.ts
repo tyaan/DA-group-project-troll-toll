@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { addUser, getUserByAuth0Sub } from '../db/users';  // Assuming the correct path to your db functions
 
+
 // Define the User type
 type User = {
   id?: number;
@@ -55,6 +56,22 @@ router.get('/:auth0_sub', async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error fetching user' });
   }
 });
+
+
+router.post('/check', async (req, res) => {
+  const { auth0_sub } = req.body
+  try {
+    const user = await getUserByAuth0Sub(auth0_sub)
+    res.json({ exists: !!user }) // Return true if user exists, false otherwise
+  } catch (err) {
+    console.error('Error checking user:', err)
+    res.status(500).json({ message: 'Error checking user' })
+  }
+})
+
+
+
+
 
 // Export the router
 export default router;
