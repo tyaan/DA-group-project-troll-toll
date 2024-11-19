@@ -20,6 +20,7 @@ export default function Bridges() {
       <h1>Auckland Bridges🧌</h1>
       <ul>
         {bridges.map((br) => {
+          // eslint-disable-next-line react/jsx-key
           return <li>{br.name}</li>
         })}
       </ul>

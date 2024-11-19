@@ -1,3 +1,20 @@
+// File: client/routes.tsx
+
 import { createRoutesFromElements, Route } from 'react-router-dom'
 import App from './components/App.tsx'
-export default createRoutesFromElements(<Route index element={<App />} />)
+import Login from './components/Login'
+import ProtectedRoute from './components/ProtectedRoute'
+
+export default createRoutesFromElements(
+  <>
+    <Route path="/login" element={<Login />} />
+    <Route
+      path="/"
+      element={
+        <ProtectedRoute>
+          <App />
+        </ProtectedRoute>
+      }
+    />
+  </>
+)
