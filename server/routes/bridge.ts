@@ -1,12 +1,15 @@
 import express from 'express'
-import { Bridge } from '../../models/bridge.ts'
-import { JwtRequest } from '../auth0.ts'
+import { Bridge, BridgeData } from '../../models/bridge.ts'
+// import { JwtRequest } from '../auth0.ts'
 
 import * as db from '../db/bridge.ts'
 
 const router = express.Router()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/gareth+sam
 router.get('/', async (req, res) => {
   try {
     const bridges = await db.getBridges()
@@ -17,7 +20,10 @@ router.get('/', async (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/gareth+sam
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
@@ -32,9 +38,14 @@ router.get('/:id', async (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 
 router.post('/', async (req, res) => {
   const newBridge: Bridge = req.body
+=======
+router.post('/', async (req, res) => {
+  const newBridge: BridgeData = req.body
+>>>>>>> origin/gareth+sam
   try {
     const createdBridge = await db.addBridge(newBridge)
     res.status(201).json(createdBridge)
@@ -44,7 +55,10 @@ router.post('/', async (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/gareth+sam
 router.put('/:id', async (req, res) => {
   const { id } = req.params
   const updatedBridge: Bridge = req.body
@@ -60,7 +74,10 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/gareth+sam
 router.delete('/:id', async (req, res) => {
   const { id } = req.params
   try {
