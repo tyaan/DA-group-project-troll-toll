@@ -240,6 +240,13 @@ footer {
   color: #333;
 }
 
+.actions-col{
+  width: 300px;
+}
+
+.bridge-image{
+  width: 500px;
+}
 .status-col {
   text-align: center;
   font-size: 1rem;

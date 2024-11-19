@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { getBridges } from '../apis/bridge.ts'
 import { useQuery } from '@tanstack/react-query'
 
@@ -30,7 +31,9 @@ export default function Bridges() {
           return (
             <div key={br.id} className="row">
               <div className="icon-col"></div>
-              <div className="name-col">{br.name}</div>
+              <div className="name-col">
+                <Link to={'/bridges/' + br.id}>{br.name}</Link>
+              </div>
               <div className="status-col">Unknown</div>
               <div className="owner-col">Unknown</div>
               <div className="actions-col">Unknown</div>
