@@ -37,7 +37,7 @@ export default function Bridges() {
         </div>
         {bridges.map((br) => {
 
-          const shouldShowPetrol = Math.random() < 0.5 //br.addedByUser == null 
+          const shouldShowPetrol = br.activeTroll == null 
           const showAdd = Math.random() < 0.5 
 
           return (
@@ -46,8 +46,8 @@ export default function Bridges() {
               <div className="bridge-col name-col">
                 <Link to={'/bridges/' + br.id}>{br.name}</Link>
               </div>
-              <div className="bridge-col status-col">{br.addedByUser == null ? 'Inactive' : 'Active'}</div>
-              <div className="bridge-col owner-col">{br.addedByUser ?? 'No Troll Operator'}</div>
+              <div className="bridge-col status-col">{br.activeTroll == null ? 'Inactive' : 'Active'}</div>
+              <div className="bridge-col owner-col">{br.activeTroll ?? 'No Troll Operator'}</div>
               <div className="bridge-col actions-col flex justify-center gap-3 items-center">
                 <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}>Petrol this bridge</button>
                 <button onClick={favouritesClick} className='action-button'><p>{showAdd ? 'Add to favourites' : 'Unfavourite'}</p></button>
