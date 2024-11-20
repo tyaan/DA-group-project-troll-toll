@@ -22,10 +22,10 @@ export default function Login() {
         .then((res) => res.json())
         .then((data) => {
           if (!data.exists) {
-            // Redirect to the registration page if the user does not exist
+            
             navigate('/register', { state: { user } })
           } else {
-            // Redirect to the main page if the user exists
+           
             navigate('/')
           }
         })

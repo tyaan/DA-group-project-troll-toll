@@ -84,14 +84,15 @@ export default function Main() {
             </button>
           </>
         ) : (
-          <button onClick={() => navigate('/login')}>Log in</button>
+          <button onClick={() => loginWithRedirect()}>Log in</button>
 
         )}
       </div>
 
       <MainContent>
         {/* Display the Bridges component only when authenticated */}
-        {isAuthenticated && <Bridges />}
+        {/* {isAuthenticated && <Bridges />} */}
+        {<Bridges />}
       </MainContent>
     </main>
   );
