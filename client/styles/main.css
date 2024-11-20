@@ -1,15 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* PAGES */
-/* h1,
-h2,
-h3 {
-  font-family: 'Bangers', sans-serif;
-} */
 
 nav {
   display: flex;
@@ -25,7 +19,8 @@ nav {
   font-family: 'Bangers', sans-serif;
   flex-grow: 1;
   text-align: center;
-  font-size: 50px;
+  font-size: 3.5rem;
+  color: black;
 }
 
 main {
@@ -41,10 +36,25 @@ header {
   background-color: white;
 }
 
-.header-title {
-  font-size: x-large;
-  font-family: 'Bangers', sans-serif;
+.header-main {
+  font-size: 3.5rem;
+  font-family: 'Calibri', sans-serif;
   text-align: center;
+  color: black;
+}
+
+.header-title {
+  font-size: 2.5rem;
+  font-family: 'Calibri', sans-serif;
+  text-align: center;
+  color: black;
+}
+
+.header-subtitle {
+  font-size: 2rem;
+  font-family: 'Calibri', sans-serif;
+  text-align: center;
+  color: black;
 }
 
 footer {
@@ -55,20 +65,37 @@ footer {
 }
 
 .container-text {
-  font-family: 'Arial', sans-serif;
-  font-size: 18px;
+  font-family: 'Calibri', sans-serif;
+  font-size: 1.25rem;
   font-weight: normal;
   text-align: center;
-  color: #333;
+  color: black;
   padding: 15px;
   margin: 20px;
-  line-height: 1.6;
-  letter-spacing: 1px;
+  line-height: 1.5;
+  letter-spacing: 2px;
   word-spacing: 2px;
   max-width: 600px;
   word-wrap: break-word;
 }
 
+.list-text {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  color: #333;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.list-text p {
+  margin: 0;
+}
+
+.list-text .font-bold {
+  padding-right: 10px;
+}
 /* ICON */
 .navigation-icon img {
   width: 70px;
@@ -84,9 +111,9 @@ footer {
   align-items: center;
 }
 
-/* Login button */
+/* Login & sign up button */
 .login-btn {
-  background-color: #1d7eca;
+  background-color: #0078d4;
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 0.375rem;
@@ -101,12 +128,12 @@ footer {
 }
 
 .login-btn:hover {
-  background-color: #03045e;
+  background-color: #005a8d;
 }
 
 .login-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #1d7eca;
+  box-shadow: 0 0 0 3px #00bfff;
 }
 
 /* Sign up button */
@@ -155,27 +182,6 @@ footer {
   outline: none;
   box-shadow: 0 0 0 2px #9dccf1;
 }
-
-/* Action buttons (inside actions-col) ?*/
-/* .actions-col button {
-  background-color: #4CAF50; 
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-right: 10px; 
-}
-
-.actions-col button:hover {
-  background-color: #45a049; 
-}
-
-.actions-col button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(72, 157, 72, 0.6); /
-} */
 
 /* Bridge table */
 .bridge-list {
@@ -236,31 +242,42 @@ footer {
 }
 
 .name-col {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: #333;
 }
 
-.actions-col{
-  width: 300px;
+.name-col a {
+  text-decoration: none;
+  color: inherit;
 }
 
-.bridge-image{
+.name-col a:hover {
+  text-decoration: underline;
+}
+
+.actions-col {
+  font-size: 1.25rem;
+  width: 300px;
+  color: #444;
+}
+
+.bridge-image {
   width: 500px;
 }
 .status-col {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #444;
 }
 
 .owner-col {
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-align: center;
   color: #444;
 }
 
 .actions-col {
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-align: center;
   color: #444;
 }
