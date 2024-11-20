@@ -16,7 +16,10 @@ export default function Main() {
           </p>
         </div>
         <div className="header-right">
-          <img src="/images/troll-under-bridge.jpg" alt="Logo" />
+          <img
+            src="/images/troll-under-bridge.jpg"
+            alt="Troll under a bridge"
+          />
         </div>
       </Header>
       <MainContent>
