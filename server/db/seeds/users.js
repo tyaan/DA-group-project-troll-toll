@@ -6,7 +6,7 @@ export async function seed(knex) {
       last_name: 'Frostpeak',
       email: 'troll1@gmail.com',
       picture: '',
-      active_bridge: 'Onehunga Harbour Road Bridge',
+      active_bridge: 1,
       fav_bridges: 'Onepoto Bridge',
       total_toll: 86,
     },
@@ -17,7 +17,7 @@ export async function seed(knex) {
       last_name: 'Fluntfist',
       email: 'troll2@gmail.com',
       picture: '',
-      active_bridge: 'Auckland Harbour Bridge',
+      active_bridge: 2,
       total_toll: 122,
     },
 
@@ -27,7 +27,7 @@ export async function seed(knex) {
       last_name: 'Rockridge',
       email: 'troll3@gmail.com',
       picture: '',
-      active_bridge: 'Jacobs Ladder Bridge',
+      active_bridge: 4,
       total_toll: 40,
     },
     {
@@ -36,8 +36,7 @@ export async function seed(knex) {
       last_name: 'Morndul',
       email: 'troll4@gmail.com',
       picture: '',
-      active_bridge: 'Tamaki Bridge',
-
+      active_bridge: 5,
       total_toll: 250,
     },
     {
@@ -46,7 +45,7 @@ export async function seed(knex) {
       last_name: 'Mountainmaw',
       email: 'troll5@gmail.com',
       picture: '',
-      active_bridge: 'Victoria Park Viaduct',
+      active_bridge: 6,
       total_toll: 100,
     },
 
@@ -56,7 +55,7 @@ export async function seed(knex) {
       last_name: 'Iceshard',
       email: 'troll6@gmail.com',
       picture: '',
-      active_bridge: 'Newmarket Viaduct',
+      active_bridge: 7,
       total_toll: 120,
     },
     {
@@ -65,7 +64,7 @@ export async function seed(knex) {
       last_name: 'Mountainmaw',
       email: 'troll7@gmail.com',
       picture: '',
-      active_bridge: 'Māngere Bridge',
+      active_bridge: 8,
       total_toll: 10,
     },
 
@@ -75,7 +74,7 @@ export async function seed(knex) {
       last_name: 'Cragtooth',
       email: 'troll8@gmail.com',
       picture: '',
-      active_bridge: 'Panmure Bridge',
+      active_bridge: 9,
       total_toll: 90,
     },
     {
@@ -84,7 +83,7 @@ export async function seed(knex) {
       last_name: 'GravelFoot',
       email: 'troll10@gmail.com',
       picture: '',
-      active_bridge: 'Wynyard Crossing',
+      active_bridge: 10,
       total_toll: 110,
     },
 
@@ -94,7 +93,7 @@ export async function seed(knex) {
       last_name: 'Frostpeak',
       email: 'troll10@gmail.com',
       picture: '',
-      active_bridge: 'Wynyard Crossing',
+      active_bridge: null,
       total_toll: 175,
     },
 
@@ -104,7 +103,7 @@ export async function seed(knex) {
       last_name: 'Tundar',
       email: 'troll11@gmail.com',
       picture: '',
-      active_bridge: 'Upper Harbour Bridge',
+      active_bridge: null,
       total_toll: 175,
     },
     {
@@ -113,7 +112,7 @@ export async function seed(knex) {
       last_name: 'Terra',
       email: 'troll12@gmail.com',
       picture: '',
-      active_bridge: 'Newmarket Viaduct',
+      active_bridge: null,
       total_toll: 185,
     },
 
@@ -123,7 +122,7 @@ export async function seed(knex) {
       last_name: 'Frostpeak',
       email: 'troll13@gmail.com',
       picture: '',
-      active_bridge: 'Upper Harbour Bridge',
+      active_bridge: null,
       total_toll: 135,
     },
     {
@@ -132,7 +131,7 @@ export async function seed(knex) {
       last_name: 'Cliffsnout',
       email: 'troll14@gmail.com',
       picture: '',
-      active_bridge: 'Grafton Bridge',
+      active_bridge: null,
       total_toll: 200,
     },
 
@@ -142,7 +141,8 @@ export async function seed(knex) {
       last_name: 'woodpeak',
       email: 'troll15@gmail.com',
       picture: '',
-      total_toll: 175,
+      active_bridge: null,
+      total_toll: 200,
     },
   ])
 }
