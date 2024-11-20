@@ -56,6 +56,7 @@ router.get('/:auth0_sub', async (req: Request, res: Response) => {
 
 router.post('/check', async (req, res) => {
   const { auth0Sub } = req.body
+  console.log("AFLJIHABSLCJHBA: " + auth0Sub)
   try {
     const user = await getUserByAuth0Sub(auth0Sub)
     res.json({ exists: !!user }) // Return true if user exists, false otherwise
