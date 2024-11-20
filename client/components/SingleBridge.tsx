@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getBridge } from '../apis/bridge'
 import Header from './Header'
 import MainContent from './MainContent'
@@ -74,6 +74,11 @@ export default function SingleBridge() {
                 </p>
               }
             </div>
+            <div className="navigation-button">
+        <button className="Add-favorite">
+          ADD TO FAVOURITE
+        </button>
+      </div>
           </div>
         </div>
         <div className="header-right">
@@ -82,6 +87,13 @@ export default function SingleBridge() {
       </Header>
       <MainContent>
         <TollCalculator />
+        {/* Add the "Go Back" button */}
+      <div className="navigation-button">
+        <Link to="/" className="home-button">
+          RETURN HOME
+        </Link>
+      </div>
+     
       </MainContent>
     </main>
   )

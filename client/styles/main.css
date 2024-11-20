@@ -297,3 +297,36 @@ footer {
 .bridge-items {
   margin-top: 20px;
 }
+
+/* --- Button Spacing  --- */
+.single-bridge-page {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+/* --- Home Button --- */
+.home-button {
+  position: relative;
+  width: 60px;
+  bottom: 70px;
+  left: auto;
+  background-color: #283629;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.Add-favorite{
+  position: relative;
+  width: 130px;
+  bottom: 0px;
+  right: auto;
+  left: auto;
+  background-color: #283629;
+  color: #ffffff;
+  padding: 10px 0px;
+  text-decoration: none;
+  border-radius: 5px;
+  
+}
