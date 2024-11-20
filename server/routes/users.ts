@@ -30,7 +30,7 @@ router.post('/register', async (req: Request<{}, {}, User>, res: Response) => {
 
 // Route to fetch user details by Auth0 sub (optional)
 // Route to fetch user details by Auth0 sub
-router.get('/api/v1/users/:auth0_sub', async (req: Request, res: Response) => {
+router.get('/:auth0_sub', async (req: Request, res: Response) => {
   const { auth0_sub } = req.params;
   console.log('Received auth0_sub:', auth0_sub);
 
