@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { addUser, getUserByAuth0Sub, updateUser } from '../db/users';  // Assuming the correct path to your db functions
+import { addUser, getUserByAuth0Sub, getUserById, updateUser } from '../db/users';  // Assuming the correct path to your db functions
 import { User, UserData } from '../../models/user';
 
 
@@ -52,6 +52,16 @@ router.get('/:auth0_sub', async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error fetching user' });
   }
 });
+
+router.get('/id/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await getUserById(Number(id))
+    res.status(200).json(user)
+  } catch (err) {
+    res.status(500).json({message: 'Error fetching user'})
+  }
+})
 
 
 router.post('/check', async (req, res) => {

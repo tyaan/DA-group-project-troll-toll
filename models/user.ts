@@ -5,7 +5,6 @@ export interface UserData {
   email: string;
   picture: string;
   activeBridge?: number;
-  favBridges?: number;
   totalToll?: number;
 }
 

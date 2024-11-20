@@ -1,6 +1,21 @@
 import db from './connection';  // Assuming db is being exported as the default from 'connection'
 import { User, UserData } from '../../models/user';
 
+export async function getUserById(id: number): Promise<User | undefined> {
+  return await db('users')
+    .where('id', id).first()
+    .select(
+      "id",
+      "auth0_sub as auth0Sub",
+      "name", 
+      "last_name as lastName", 
+      "email", 
+      "picture", 
+      "active_bridge as activeBridge", 
+      "total_toll as totalToll"
+    )
+}
+
 export async function getUserByAuth0Sub(auth0Sub: string): Promise<User | undefined> {
   try {
     console.log(`Attempting to fetch user with auth0_sub: ${auth0Sub}`);
@@ -24,7 +39,6 @@ export async function updateUser(userData: UserData): Promise<User> {
       "email": userData.email, 
       "picture": userData.picture, 
       "activeBridge": userData.activeBridge, 
-      "fav_bridges": userData.favBridges, 
       "total_toll": userData.totalToll
     }, ['*'])
 }
