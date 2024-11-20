@@ -1,14 +1,8 @@
 import db from './connection';  // Assuming db is being exported as the default from 'connection'
 import { User, UserData } from '../../models/user';
 
-export async function getUserByAuth0Sub(auth0Sub: string): Promise<User | undefined> {
-  try {
-    console.log(`Attempting to fetch user with auth0_sub: ${auth0Sub}`);
-    return await db('users').where({ auth0_sub: auth0Sub }).first();
-  } catch (err) {
-    console.error('Error fetching user:', err);
-    throw err;
-  }
+export function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> {
+  return db('users').where({ auth0_sub }).first();
 }
 
 export async function addUser(user: User): Promise<User[]> {
