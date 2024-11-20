@@ -18,6 +18,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params
+
+  console.log(id)
   try {
     const bridge = await db.getBridgeById(Number(id))
     if (!bridge) {

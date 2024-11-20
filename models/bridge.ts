@@ -5,7 +5,7 @@ export interface BridgeData {
   yearBuilt: number
   lengthMeters: string
   lanes?: number | null
-  addedByUser: string
+  activeTroll: string | null
 }
 
 export interface Bridge extends BridgeData {
