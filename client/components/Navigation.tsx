@@ -2,13 +2,13 @@
 import { Link } from 'react-router-dom'
 
 
-import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'
-import { useNavigate } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
+// import { useNavigate } from 'react-router-dom'
 
 function Navigation() {
 
-  const { loginWithRedirect, user, isAuthenticated, isLoading } = useAuth0()
-    const navigate = useNavigate()
+  const { loginWithRedirect} = useAuth0()
+    // const navigate = useNavigate()
   
   return (
     <nav className="navigation">

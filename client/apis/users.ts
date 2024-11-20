@@ -3,17 +3,21 @@ import { User, UserData } from '../../models/users.ts'
 
 const userURL = '/api/v1/users'
 
+interface ErrorWithStatus extends Error {
+  status?: number;
+}
+
 
 export async function getUser(auth0Sub: string): Promise<User | null> {
   try {
-    const res = await request.get(`${userURL}/${auth0Sub}`)
-    return res.body
+    const res = await request.get(`${userURL}/${auth0Sub}`);
+    return res.body;
   } catch (err: unknown) {
-    if ((err as any).status === 404) {
-      return null 
+    if ((err as ErrorWithStatus).status === 404) {
+      return null;
     }
-    console.error('Error fetching user:', err)
-    throw err
+    console.error('Error fetching user:', err);
+    throw err;
   }
 }
 

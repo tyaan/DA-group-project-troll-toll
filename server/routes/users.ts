@@ -7,41 +7,24 @@ import db from '../db/connection';
 const router = Router();
 
 // Route to register a new user
-router.post('/register', async (req: Request<{}, {}, User>, res: Response) => {
-  try {
-    const userData: User = req.body;
+router.post(  '/register',  async (req: Request<Record<string, never>, Record<string, never>, User>, res: Response) => {
+    try {
+      const userData: User = req.body;
 
-    const existingUser = await getUserByAuth0Sub(userData.auth0_sub);
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+      const existingUser = await getUserByAuth0Sub(userData.auth0_sub);
+      if (existingUser) {
+        return res.status(400).json({ message: 'User already exists' });
+      }
+
+      const newUser = await addUser(userData);
+
+      res.status(201).json(newUser);
+    } catch (err: unknown) {
+      console.error(err);
+      res.status(500).json({ message: 'Error registering user' });
     }
-
-    const newUser = await addUser(userData);
-
-    res.status(201).json(newUser);
-  } catch (err: unknown) {
-    console.error(err);
-    res.status(500).json({ message: 'Error registering user' });
   }
-});
-
-// Route to fetch user details by Auth0 sub (optional)
-// Route to fetch user details by Auth0 sub
-router.get('/:auth0_sub', async (req: Request, res: Response) => {
-  try {
-    const { auth0_sub } = req.params;
-    const user = await getUserByAuth0Sub(auth0_sub);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
-    }
-
-    res.status(200).json(user);
-  } catch (err: unknown) {
-    console.error(err);
-    res.status(500).json({ message: 'Error fetching user' });
-  }
-});
+);
 
 
 

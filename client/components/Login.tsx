@@ -1,10 +1,10 @@
-import { createRoot } from 'react-dom/client'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+// import { createRoot } from 'react-dom/client'
+// import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { RouterProvider, createBrowserRouter, useNavigate } from 'react-router-dom'
-import routes from '../../client/routes.tsx'
-import { Auth0Provider, useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
+// import routes from '../../client/routes.tsx'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 
 export default function Login() {
