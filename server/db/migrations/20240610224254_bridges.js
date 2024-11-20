@@ -1,5 +1,7 @@
-import knex from 'knex'
-
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export async function up(knex) {
   await knex.schema.createTable('bridges', (table) => {
     table.increments('id').primary()
@@ -38,6 +40,10 @@ export async function up(knex) {
   })
 }
 
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export async function down(knex) {
   await knex.schema.dropTable('toll_analytics')
   await knex.schema.dropTable('bridges')
