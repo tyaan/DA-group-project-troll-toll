@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import * as Path from 'node:path';
 
 import bridgeRoutes from './routes/bridge';
@@ -8,6 +9,7 @@ import tollRoutes from './routes/toll'
 const server = express();
 
 server.use(express.json());
+server.use(cors());
 
 // Bridge tabl routes
 server.use('/api/v1/bridges', bridgeRoutes);
