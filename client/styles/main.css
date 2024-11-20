@@ -323,6 +323,15 @@ footer {
   border-radius: 5px;
 }
 
+.home-button:hover {
+  background-color: #005a8d;
+}
+
+.home-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #00bfff;
+}
+
 .Add-favorite{
   position: relative;
   width: 130px;
@@ -335,4 +344,13 @@ footer {
   text-decoration: none;
   border-radius: 5px;
   
+}
+
+.Add-favorite:hover {
+  background-color: #005a8d;
+}
+
+.Add-favoriten:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #00bfff;
 }
