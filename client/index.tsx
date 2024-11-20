@@ -9,22 +9,17 @@ import { Auth0Provider } from '@auth0/auth0-react'
 const router = createBrowserRouter(routes)
 const queryClient = new QueryClient()
 
-
-const domain = import.meta.env.VITE_AUTH0_DOMAIN as string;
-const clientId = import.meta.env.VITE_AUTH0_CLIENT_ID as string;
-const audience = import.meta.env.VITE_AUTH0_AUDIENCE as string;
-
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     /**
      * TODO: replace domain, clientId, and audience
      */
     <Auth0Provider
-      domain = {domain}
-      clientId={clientId}
+      domain=""
+      clientId=""
       authorizationParams={{
         redirect_uri: window.location.origin,
-        audience: audience  ,
+        audience: '',
       }}
     >
       <QueryClientProvider client={queryClient}>
