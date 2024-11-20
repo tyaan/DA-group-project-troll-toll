@@ -18,6 +18,29 @@ export default function SingleBridge() {
     queryFn: () => getBridge(Number(params.id)),
   })
 
+  // Function to add the bridge to favorites. //
+  const addToFavorites = async () => {
+    try {
+      const userId = 1 // Replace this with the actual logged-in user's ID
+      const response = await fetch('/api/favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, bridgeId: bridge.id }), // Send the bridgeId and userId in the body
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to add bridge to favorites')
+      }
+
+      alert('Bridge added to your favorites!')
+    } catch (error) {
+      console.error('Error adding to favorites:', error)
+      alert('Failed to add bridge to favorites')
+    }
+  }
+
   if (error) {
     return <p>The bridge isn&#39;t loading! What&#39;s going on???</p>
   }
@@ -75,10 +98,10 @@ export default function SingleBridge() {
               }
             </div>
             <div className="navigation-button">
-        <button className="Add-favorite">
-          ADD TO FAVOURITE
-        </button>
-      </div>
+              <button className="Add-favorite" onClick={addToFavorites}>
+                ADD TO FAVOURITE
+              </button>
+            </div>
           </div>
         </div>
         <div className="header-right">
@@ -88,12 +111,11 @@ export default function SingleBridge() {
       <MainContent>
         <TollCalculator />
         {/* Add the "Go Back" button */}
-      <div className="navigation-button">
-        <Link to="/" className="home-button">
-          RETURN HOME
-        </Link>
-      </div>
-     
+        <div className="navigation-button">
+          <Link to="/" className="home-button">
+            RETURN HOME
+          </Link>
+        </div>
       </MainContent>
     </main>
   )
