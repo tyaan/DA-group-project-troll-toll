@@ -80,7 +80,7 @@ export default function Main() {
         {isAuthenticated ? (
           <>
             <p>
-              Welcome, {user?.given_name} {user?.family_name} ({user?.email})
+              Welcome, {user?.given_name} {user?.family_name} ({user?.email}) ({user?.sub})
             </p>
             <button onClick={() => logout({ returnTo: window.location.origin })}>
               Log out
