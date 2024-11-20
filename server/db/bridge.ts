@@ -11,7 +11,7 @@ export async function getBridges(): Promise<Bridge[]> {
     'length_meters as lengthMeters',
     'lanes',
     'added_by_user as addedByUser',
-  )
+  ) as Bridge[]
 }
 
 export async function getBridgeById(id: number): Promise<Bridge | null> {

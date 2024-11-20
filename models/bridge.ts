@@ -11,13 +11,3 @@ export interface BridgeData {
 export interface Bridge extends BridgeData {
   id: number
 }
-
-export interface TollData {
-  bridgeId: number
-  timestamp: string
-  revenue: number
-}
-
-export interface Toll extends TollData {
-  id: number
-}
