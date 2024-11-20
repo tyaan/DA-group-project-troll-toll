@@ -1,3 +1,7 @@
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export async function up(knex) {
   await knex.schema.createTable('bridges', (table) => {
     table.increments('id').primary()
@@ -7,7 +11,6 @@ export async function up(knex) {
     table.integer('year_built')
     table.integer('length_meters')
     table.integer('lanes').nullable()
-    table.string('added_by_user')
   })
 
   await knex.schema.createTable('toll_analytics', (table) => {
@@ -24,14 +27,26 @@ export async function up(knex) {
     table.string('name')
     table.string('last_name')
     table.string('email')
-    table.string('image')
+    table.string('picture')
     table.integer('active_bridge')
     table.integer('fav_bridges')
     table.decimal('total_toll')
   })
+
+  await knex.schema.createTable('favourites', (table) => {
+    table.integer('id').primary()
+    table.integer('user_id')
+    table.integer('bridge_id')
+  })
 }
 
+/**
+ * @param { import("knex").Knex } knex
+ * @returns { Promise<void> }
+ */
 export async function down(knex) {
   await knex.schema.dropTable('toll_analytics')
   await knex.schema.dropTable('bridges')
+  await knex.schema.dropTable('users')
+  await knex.schema.dropTable('favourites')
 }
