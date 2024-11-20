@@ -24,7 +24,7 @@ export async function up(knex) {
     table.string('name')
     table.string('last_name')
     table.string('email')
-    table.string('image')
+    table.string('picture')
     table.integer('active_bridge')
     table.integer('fav_bridges')
     table.decimal('total_toll')
