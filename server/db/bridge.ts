@@ -3,7 +3,7 @@ import { Bridge, BridgeData } from '../../models/bridge.ts'
 
 export async function getBridges(): Promise<Bridge[]> {
   return await db('bridges')
-    .join('users', 'users.active_bridge', 'bridges.id')
+    .leftJoin('users', 'users.active_bridge', 'bridges.id')
     .select(
       'bridges.id as id',
       'bridges.name as name',
@@ -12,13 +12,13 @@ export async function getBridges(): Promise<Bridge[]> {
       'bridges.year_built as yearBuilt',
       'bridges.length_meters as lengthMeters',
       'bridges.lanes as lanes',
-      'users.id as activeTrollId',
+      'users.name as activeTroll'
     )
 }
 
 export async function getBridgeById(id: number): Promise<Bridge | null> {
   const bridge = await db('bridges')
-    .join('users', 'users.active_bridge', 'bridges.id')
+    .leftJoin('users', 'users.active_bridge', 'bridges.id')
     .where('bridges.id', id)
     .first()
     .select(
@@ -29,7 +29,7 @@ export async function getBridgeById(id: number): Promise<Bridge | null> {
       'bridges.year_built as yearBuilt',
       'bridges.length_meters as lengthMeters',
       'bridges.lanes as lanes',
-      'users.id as activeTrollId',
+      'users.name as activeTroll',
     )
 
   return bridge || null
