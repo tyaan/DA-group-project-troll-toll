@@ -6,7 +6,7 @@ import { User, UserData } from '../../models/user';
 const router = Router();
 
 // Route to register a new user
-router.post('/register', async (req: Request<{}, {}, User>, res: Response) => {
+router.post('/register', async (req: Request<unknown, unknown, User>, res: Response) => {
   try {
     // Extract user data from the request body
     const userData: User = req.body;
