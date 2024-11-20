@@ -7,7 +7,6 @@ export async function seed(knex) {
       email: 'troll1@gmail.com',
       picture: '',
       active_bridge: 1,
-      fav_bridges: 'Onepoto Bridge',
       total_toll: 86,
     },
 
