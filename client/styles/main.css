@@ -229,8 +229,15 @@ footer {
 }
 
 .row:hover {
-  background-color: #e6f7ff;
+  background-color: #e6f7ff !important;
 }
+
+.bridge-col{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .icon-col {
   text-align: center;
 }
@@ -238,10 +245,7 @@ footer {
 .name-col {
   font-size: 1.2rem;
   color: #333;
-}
-
-.actions-col{
-  width: 300px;
+  justify-content: flex-start;
 }
 
 .bridge-image{
@@ -263,6 +267,26 @@ footer {
   font-size: 1rem;
   text-align: center;
   color: #444;
+}
+
+.action-button{
+  background-color: #dddddd;
+  padding: 8px;
+  border-radius: 5px;
+  width: 140px;
+}
+
+.action-button > p{
+  margin: auto;
+  text-align: center;
+}
+
+.action-button:hover{
+  background-color: #c9c9c9;
+}
+
+.action-button:active{
+  background-color: #a5a5a5;
 }
 
 /* Styling for alternate row colors */
