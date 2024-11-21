@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { getBridges } from '../apis/bridge.ts'
 import { useQuery } from '@tanstack/react-query'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Bridges() {
   const {
@@ -8,6 +9,8 @@ export default function Bridges() {
     error,
     isLoading,
   } = useQuery({ queryKey: ['bridges'], queryFn: getBridges })
+
+  const auth = useAuth0()
 
   if (error) {
     return <p>Your bridges are gone! What a massive error</p>
@@ -37,8 +40,11 @@ export default function Bridges() {
         </div>
         {bridges.map((br) => {
 
-          const shouldShowPetrol = br.activeTroll == null 
-          const showAdd = Math.random() < 0.5 
+          const shouldShowPetrol = auth.isAuthenticated && (br.activeTroll == null || auth.user?.sub === br.activeTrollSubId)
+          const shouldShowFavourite = true//auth.isAuthenticated
+
+          const patrolText = auth.user?.sub != br.activeTrollSubId ? 'Patrol this bridge' : 'Stop Patrolling'
+          const favText = br.isFavourited ? 'Unfavourite' : 'Add to favourites'
 
           return (
             <div key={br.id} className="row">
@@ -49,8 +55,8 @@ export default function Bridges() {
               <div className="bridge-col status-col">{br.activeTroll == null ? 'Inactive' : 'Active'}</div>
               <div className="bridge-col owner-col">{br.activeTroll ?? 'No Troll Operator'}</div>
               <div className="bridge-col actions-col flex justify-center gap-3 items-center">
-                <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}>Petrol this bridge</button>
-                <button onClick={favouritesClick} className='action-button'><p>{showAdd ? 'Add to favourites' : 'Unfavourite'}</p></button>
+                <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}>{patrolText}</button>
+                <button onClick={favouritesClick} className={'action-button' + (shouldShowFavourite ? '' : ' opacity-0 pointer-events-none')}><p>{favText}</p></button>
               </div>
             </div>
           )
