@@ -51,7 +51,7 @@ export default function TollCalculator(){
   const handleAddToll = (evt: FormEvent) => {
     evt.preventDefault();
 
-    if(isNaN(Number(formState.revenue))){
+    if(isNaN(Number(formState.revenue)) || Number(formState.revenue) == 0){
       alert('Revenue must be a number!')
       return
     }
@@ -93,8 +93,10 @@ export default function TollCalculator(){
         <br />
         {`${date.getHours()}:${String(date.getMinutes() + 1).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`}
       </div>
-    );
-  };
+    )
+  }
+
+  
 
   return (
   <div className="toll-calculator">
@@ -103,9 +105,9 @@ export default function TollCalculator(){
       <div className="bridge-items">
         <div className="top-row">
           <div className="icon-col"></div>
-          <div>Revenue</div>
-          <div>Troll</div>
-          <div>Timestamp</div>
+          <div className="name-col">Revenue</div>
+          <div className="name-col">Troll</div>
+          <div className="name-col">Timestamp</div>
         </div>
 
         {(isAuthenticated) && (
@@ -113,16 +115,16 @@ export default function TollCalculator(){
             <div className="icon-col"></div>
 
             <form>
-              <div>
+              <div className="name-col">
                 <input id="revenue" name="revenue" value={formState.revenue} onChange={handleChange} />
               </div>
             </form>
       
-              <div>
+              <div className="name-col">
                 {user?.name}
               </div>
 
-              <div>
+              <div className="name-col">
                 {renderTime(currentTime)}
               </div>  
 
@@ -133,12 +135,14 @@ export default function TollCalculator(){
         )
         }
 
-        {tolls.map((toll) => (
+        {tolls
+        .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+        .map((toll) => (
             <div key={toll.id} className="row">
               <div className="icon-col"></div>
-              <div>{toll.revenue}</div>
-              <div>{toll.userName}</div>
-              {<div>{renderTime(toll.timestamp)}</div>}
+              <div className="name-col">{toll.revenue}</div>
+              <div className="name-col">{toll.userName}</div>
+              <div className="name-col">{renderTime(toll.timestamp)}</div>
             </div>
           )
         )}
