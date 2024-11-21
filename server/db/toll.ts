@@ -13,29 +13,38 @@ export async function addToll(tollData: TollData): Promise<Toll | undefined> {
 }
 
 export async function getTolls(): Promise<Toll[] | undefined> {
-   return await db('toll_analytics').select(
-     "bridge_id as bridgeId", 
-     "user_id as userId", 
-     "revenue", 
-     "timestamp"
-   ) as Toll[]
+   return await db('toll_analytics')
+      .leftJoin('users', 'toll_analytics.user_id', 'users.id')
+      .select(
+        "bridge_id as bridgeId", 
+        "user_id as userId", 
+        "users.name as userName",
+        "revenue", 
+        "timestamp"
+      ) as Toll[]
 }
 
 export async function getTollsByBridgeId(bridgeId: number): Promise<Toll[] | undefined> {
-  return await db('toll_analytics').where("bridge_id", bridgeId)
+  return await db('toll_analytics')
+    .leftJoin('users', 'toll_analytics.user_id', 'users.id')
+    .where("bridge_id", bridgeId)
     .select(
       "bridge_id as bridgeId", 
       "user_id as userId", 
+      "users.name as userName",
       "revenue", 
       "timestamp"
     ) as Toll[]
 }
 
 export async function getTollsByUserId(userId: number): Promise<Toll[] | undefined> {
-  return await db('toll_analytics').where("user_id", userId)
+  return await db('toll_analytics')
+    .leftJoin('users', 'toll_analytics.user_id', 'users.id')
+    .where("user_id", userId)
     .select(
       "bridge_id as bridgeId", 
       "user_id as userId", 
+      "users.name as userName",
       "revenue", 
       "timestamp"
     ) as Toll[]

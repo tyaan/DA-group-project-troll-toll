@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
-import { getTollsByBridgeId } from "../apis/bridge"
-import { getUserById } from "../../server/db/users"
+import { getTollsByBridgeId } from "../apis/toll"
 
 export default function TollCalculator(){
   
@@ -10,11 +9,6 @@ export default function TollCalculator(){
   const {data: tolls, isPending, isError} = useQuery({
     queryKey: ['tolls'], 
     queryFn: () => getTollsByBridgeId(Number(bridgeId))
-  })
-
-  const {data: user, isPending, isError} = useQuery({
-    queryKey: ['tolls'], 
-    queryFn: () => getUserById(Number(bridgeId))
   })
 
   if(isPending) {
@@ -41,7 +35,7 @@ export default function TollCalculator(){
             <div key={toll.id} className="row">
               <div className="icon-col"></div>
               <div>{toll.revenue}</div>
-              <div>{toll.userId}</div>
+              <div>{toll.userName}</div>
               <div>{toll.timestamp}</div>
             </div>
           )

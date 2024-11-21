@@ -1,6 +1,7 @@
 export interface TollData {
   bridgeId: number, 
   userId: number,
+  userName: string,
   revenue: number, 
   timestamp: string
 }
