@@ -18,20 +18,29 @@ router.post('/', async (req, res) => {
 // Get a user's favorite bridges
 router.get('/', async (req, res) => {
   const userId = req.query.userId;
-  if (!userId) {
-    return res.status(400).send({ error: 'User ID is required' });
+
+  // Validate userId presence
+  if (!userId || typeof userId !== 'string') {
+    return res.status(400).send({ error: 'Invalid or missing user ID' });
   }
+
   try {
-    const favorites = await getFavoriteBridges(Number(userId));
+    const favorites = await getFavoriteBridges(userId);
+
+    if (favorites.length === 0) {
+      return res.status(200).json({ favorites: [], message: 'No favorite bridges found' });
+    }
+
     res.status(200).json({ favorites });
   } catch (err) {
-    console.error(err);
+    console.error('Error fetching favorite bridges:', err.message);
     res.status(500).send({ error: 'Unable to retrieve favorite bridges' });
   }
 });
 
 
-router.delete('/favorites', async (req, res) => {
+
+router.delete('/', async (req, res) => {
   const { userId, bridgeId } = req.body
   try {
     await removeFavoriteBridge(userId, bridgeId)

@@ -6,15 +6,15 @@ export async function addFavoriteBridge(userId: FavouriteData, bridgeId: Favouri
  return await db('favourites').insert({ user_id: userId, bridge_id: bridgeId });
 }
 
-export async function getFavoriteBridges(userId: number): Promise<{ id: number; name: string }[]> {
+export async function getFavoriteBridges(userId: string): Promise<{ id: number; name: string }[]> {
   return await db('favourites')
     .join('bridges', 'favourites.bridge_id', 'bridges.id')
-    .where('favourites.user_id', userId)
+    .where('favourites.user_id', userId) // userId remains a string
     .select('bridges.id as id', 'bridges.name as name');
 }
 
 
-export async function removeFavoriteBridge(userId: number, bridgeId: number): Promise<void> {
+export async function removeFavoriteBridge(userId: string, bridgeId: number): Promise<void> {
   await db('favourites')
     .where({ user_id: userId, bridge_id: bridgeId })
     .del()

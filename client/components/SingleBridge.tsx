@@ -28,7 +28,7 @@ export default function SingleBridge() {
     if (user) {
       const checkIfFavorite = async () => {
         const userId = user.sub
-        const favorites = await getFavorites(Number(userId))
+        const favorites = await getFavorites(userId)
         const isInFavorites = favorites.some(fav => fav.id === bridge.id)
         setIsFavorite(isInFavorites)
       }

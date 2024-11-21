@@ -8,18 +8,18 @@ export interface FavoriteBridge {
 }
 
 // Add a bridge to the user's favorites
-export async function addFavorite(userId: number, bridgeId: number): Promise<void> {
+export async function addFavorite(userId: string, bridgeId: number): Promise<void> {
   await request.post(favoritesURL).send({ userId, bridgeId })
 }
 
 // Remove a bridge from the user's favorites
-export async function removeFavorite(userId: number, bridgeId: number): Promise<void> {
+export async function removeFavorite(userId: string, bridgeId: number): Promise<void> {
   await request.delete(favoritesURL).send({ userId, bridgeId })
 }
 
 
 // Get a user's favorite bridges
-export async function getFavorites(userId: number): Promise<FavoriteBridge[]> {
+export async function getFavorites(userId: string): Promise<FavoriteBridge[]> {
   const res = await request.get(favoritesURL).query({ userId })
   return res.body.favorites
 }
