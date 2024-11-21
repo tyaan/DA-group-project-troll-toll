@@ -11,7 +11,7 @@ export default function Bridges() {
     data: bridges,
     error,
     isLoading,
-  } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)) })
+  } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)).catch(e => getBridges()) })
 
   
 
@@ -44,7 +44,7 @@ export default function Bridges() {
         {bridges.map((br) => {
 
           const shouldShowPetrol = auth.isAuthenticated && (br.activeTroll == null || auth.user?.sub === br.activeTrollSubId)
-          const shouldShowFavourite = true//auth.isAuthenticated
+          const shouldShowFavourite = auth.isAuthenticated
           console.log(auth.user?.sub)
 
           const patrolText = auth.user?.sub != br.activeTrollSubId ? 'Patrol this bridge' : 'Stop Patrolling'

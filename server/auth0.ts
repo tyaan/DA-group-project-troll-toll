@@ -20,6 +20,7 @@ const checkJwt = jwt({
   audience: audience,
   issuer: `${domain}/`,
   algorithms: ['RS256'],
+  credentialsRequired: false
 })
 
 export default checkJwt

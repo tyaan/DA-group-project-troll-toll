@@ -11,12 +11,12 @@ const router = express.Router()
 router.get('/', checkJwt, async (req, res) => {
   try {
     const r = req as unknown as Record<string, Record<string, string>>
-    const bridges = await db.getBridges(r.auth.sub)
+    const bridges = await db.getBridges(r.auth?.sub)
     //console.log(req.auth)
     res.json(bridges)
   } catch (error) {
     console.error(error)
-    res.status(500).send('Something went wrong')
+    res.status(500).send('Something went wrong v2')
   }
 })
 
