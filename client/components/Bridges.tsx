@@ -15,11 +15,15 @@ export default function Bridges() {
     isLoading,
   } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)).catch(() => getBridges()) })
 
-  const {mutate} = useMutation({
+  const favMutation = useMutation({
     mutationFn: ({bridgeId, favourite}: {bridgeId: number, favourite: boolean}) => favourite ? addFavorite(auth.user!.sub!, bridgeId) : removeFavorite(auth.user!.sub!, bridgeId),
     onSuccess: () =>{
       queryClient.invalidateQueries(['bridges'])
     }
+  })
+
+  const patrolMutation = useMutation({
+    mutationFn: (bridgeId: number | null) => 
   })
 
   if (error) {
@@ -34,7 +38,7 @@ export default function Bridges() {
   }
 
   const favouritesClick = (bridgeId: number, isFavourite: boolean) =>{
-    mutate({bridgeId, favourite: !isFavourite})
+    favMutation.mutate({bridgeId, favourite: !isFavourite})
   }
 
   return (
