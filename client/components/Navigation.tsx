@@ -1,15 +1,16 @@
 // import React from "react"
 import { Link } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
+
 
 
 
 
 function Navigation() {
 
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
-  const navigate = useNavigate();
+  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+
 
   // const { loginWithRedirect} = useAuth0()
     // const navigate = useNavigate()

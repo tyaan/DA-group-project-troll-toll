@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import Bridges from './Bridges';
@@ -8,7 +8,7 @@ import {registerUser } from '../../client/apis/users.ts';
 // import Login from './Login.tsx';
 
 export default function Main() {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+  const {  user, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
   const checkAndRegisterUser = async () => {
