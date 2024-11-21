@@ -1,33 +1,37 @@
-import {useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { useNavigate } from 'react-router-dom';
-import Bridges from './Bridges';
-import Header from './Header';
-import MainContent from './MainContent';
-import {registerUser } from '../../client/apis/users.ts';
+import { useEffect } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useNavigate } from 'react-router-dom'
+import Bridges from './Bridges'
+import Header from './Header'
+import MainContent from './MainContent'
+import { registerUser } from '../../client/apis/users.ts'
+import ListUserTolls from './ListUserTolls.tsx'
 // import Login from './Login.tsx';
 
 export default function Main() {
-  const {  user, isAuthenticated, isLoading } = useAuth0();
-  const navigate = useNavigate();
+  const { user, isAuthenticated, isLoading } = useAuth0()
+  const navigate = useNavigate()
 
   const checkAndRegisterUser = async () => {
-    if (!user) return;
+    if (!user) return
 
     try {
-      const userExistsResponse = await fetch('http://localhost:5173/api/v1/users/check', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const userExistsResponse = await fetch(
+        'http://localhost:5173/api/v1/users/check',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ auth0Sub: user.sub }),
         },
-        body: JSON.stringify({ auth0Sub: user.sub }), 
-      });
+      )
 
-      const userExists = await userExistsResponse.json();
+      const userExists = await userExistsResponse.json()
 
       if (userExists.exists) {
-        console.log('User already exists.');
-        navigate('/');
+        console.log('User already exists.')
+        navigate('/')
       } else {
         const userData = {
           auth0_sub: user.sub,
@@ -35,25 +39,25 @@ export default function Main() {
           last_name: user.family_name,
           email: user.email,
           picture: user.picture,
-        };
+        }
 
-        await registerUser(userData);
-        console.log('User registered successfully');
-        navigate('/');
+        await registerUser(userData)
+        console.log('User registered successfully')
+        navigate('/')
       }
     } catch (err) {
-      console.error('Error during user registration or check:', err);
+      console.error('Error during user registration or check:', err)
     }
-  };
+  }
 
   useEffect(() => {
     if (isAuthenticated && user) {
-      checkAndRegisterUser();
+      checkAndRegisterUser()
     }
-  }, [isAuthenticated, user, navigate]);
+  }, [isAuthenticated, user, navigate])
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   return (
@@ -76,13 +80,13 @@ export default function Main() {
         </div>
       </Header>
 
-      
-
       <MainContent>
         {/* Display the Bridges component only when authenticated */}
         {/* {isAuthenticated && <Bridges />} */}
         {<Bridges />}
+        <br />
+        {isAuthenticated && <ListUserTolls />}
       </MainContent>
     </main>
-  );
+  )
 }

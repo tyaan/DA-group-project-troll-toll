@@ -23,7 +23,6 @@ export async function updateUser(userData: UserData): Promise<User> {
       "email": userData.email, 
       "picture": userData.picture, 
       "active_bridge": userData.activeBridge, 
-      "fav_bridges": userData.favBridges, 
       "total_toll": userData.totalToll
     }, ['*'])
 }
