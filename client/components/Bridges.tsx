@@ -55,7 +55,7 @@ export default function Bridges() {
               <div className="bridge-col status-col">{br.activeTroll == null ? 'Inactive' : 'Active'}</div>
               <div className="bridge-col owner-col">{br.activeTroll ?? 'No Troll Operator'}</div>
               <div className="bridge-col actions-col flex justify-center gap-3 items-center">
-                <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}>{patrolText}</button>
+                <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}><p>{patrolText}</p></button>
                 <button onClick={favouritesClick} className={'action-button' + (shouldShowFavourite ? '' : ' opacity-0 pointer-events-none')}><p>{favText}</p></button>
               </div>
             </div>

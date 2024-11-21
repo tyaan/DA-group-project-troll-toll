@@ -1,11 +1,14 @@
-import { Bridge } from "../../models/bridge";
+import { Bridge } from '../../models/bridge'
 
-interface Props{
+interface Props {
   bridge: Bridge
 }
 
-export function BridgeImage({bridge}: Props){
+export function BridgeImage({ bridge }: Props) {
   const path = '/images/auckland-bridges/'
-  const fileName = bridge.name.toLowerCase().replace(/\s/g, '-').replace(/ā/g, 'a') + '.jpg'
-  return <img className='bridge-image' src={path + fileName} alt={bridge.name}/>
+  const fileName =
+    bridge.name.toLowerCase().replace(/\s/g, '-').replace(/ā/g, 'a') + '.png'
+  return (
+    <img className="bridge-image" src={path + fileName} alt={bridge.name} />
+  )
 }
