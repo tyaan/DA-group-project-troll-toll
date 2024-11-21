@@ -98,7 +98,7 @@ export default function Main() {
         {/* {isAuthenticated && <Bridges />} */}
         {<Bridges />}
         <br />
-        {<ListUserTolls />}
+        {isAuthenticated && <ListUserTolls />}
       </MainContent>
     </main>
   );
