@@ -40,10 +40,12 @@ export async function getTollsByBridgeId(bridgeId: number): Promise<Toll[] | und
 export async function getTollsByUserAuth0Sub(auth0Sub: string): Promise<Toll[] | undefined> {
   return await db('toll_analytics')
     .leftJoin('users', 'toll_analytics.user_id', 'users.auth0_sub')
+    .leftJoin('bridges', 'toll_analytics.bridge_id', 'bridges.id')
     .where("auth0_sub", auth0Sub)
     .select(
       "bridge_id as bridgeId", 
       "users.auth0_sub as userId",
+      "bridges.name as bridgeName",
       db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
       "revenue", 
       "timestamp"

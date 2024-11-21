@@ -5,6 +5,7 @@ import Bridges from './Bridges';
 import Header from './Header';
 import MainContent from './MainContent';
 import {registerUser } from '../../client/apis/users.ts';
+import ListUserTolls from './ListUserTolls.tsx';
 // import Login from './Login.tsx';
 
 export default function Main() {
@@ -96,6 +97,8 @@ export default function Main() {
         {/* Display the Bridges component only when authenticated */}
         {/* {isAuthenticated && <Bridges />} */}
         {<Bridges />}
+        <br />
+        {<ListUserTolls />}
       </MainContent>
     </main>
   );
