@@ -1,8 +1,12 @@
 import db from './connection.ts'
 import { Bridge, BridgeData } from '../../models/bridge.ts'
 
-export async function getBridges(): Promise<Bridge[]> {
-  return await db('bridges')
+export async function getBridges(subId: string | null = null): Promise<Bridge[]> {
+
+  const subquery = db('favourites').count('*')
+    .where('favourites.user_id', subId).andWhere('favourites.bridge_id', db.ref('bridges.id')).as('isFavourited')
+
+  const bridges = await db('bridges')
     .leftJoin('users', 'users.active_bridge', 'bridges.id')
     .select(
       'bridges.id as id',
@@ -12,8 +16,13 @@ export async function getBridges(): Promise<Bridge[]> {
       'bridges.year_built as yearBuilt',
       'bridges.length_meters as lengthMeters',
       'bridges.lanes as lanes',
-      'users.name as activeTroll'
-    )
+      'users.name as activeTroll',
+      'users.auth0_sub as activeTrollSubId',
+      subquery
+    ) as Bridge[]
+    bridges.forEach(b => b.isFavourited = Boolean(b.isFavourited))
+    //console.log(bridges)
+    return bridges
 }
 
 export async function getBridgeById(id: number): Promise<Bridge | null> {

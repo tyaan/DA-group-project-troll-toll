@@ -1,25 +1,27 @@
 import express from 'express'
 import { Bridge, BridgeData } from '../../models/bridge.ts'
 // import { JwtRequest } from '../auth0.ts'
+import checkJwt from '../auth0.ts'
 
 import * as db from '../db/bridge.ts'
 import { addFavoriteBridge, getFavoriteBridges } from '../db/favourites.ts'
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
+router.get('/', checkJwt, async (req, res) => {
   try {
-    const bridges = await db.getBridges()
+    const r = req as unknown as Record<string, Record<string, string>>
+    const bridges = await db.getBridges(r.auth?.sub)
+    //console.log(req.auth)
     res.json(bridges)
   } catch (error) {
     console.error(error)
-    res.status(500).send('Something went wrong')
+    res.status(500).send('Something went wrong v2')
   }
 })
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params
-
   console.log(id)
   try {
     const bridge = await db.getBridgeById(Number(id))
