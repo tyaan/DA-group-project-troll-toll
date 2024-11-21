@@ -9,6 +9,6 @@ export interface BridgeData {
 }
 
 export interface Bridge extends BridgeData {
-  addedByUser: any
+  addedByUser: string | null;
   id: number
 }

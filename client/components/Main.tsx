@@ -20,7 +20,7 @@ export default function Main() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ auth0Sub: user.sub }),
+        body: JSON.stringify({ auth0Sub: user.sub }), 
       });
 
       const userExists = await userExistsResponse.json();
@@ -80,7 +80,7 @@ export default function Main() {
         {isAuthenticated ? (
           <>
             <p>
-              Welcome, {user?.given_name} {user?.family_name} ({user?.email}) ({user?.sub})
+              Welcome, {user?.given_name} {user?.family_name} ({user?.email}) ({user?.sub}) ({user.})
             </p>
             <button onClick={() => logout({ returnTo: window.location.origin })}>
               Log out
