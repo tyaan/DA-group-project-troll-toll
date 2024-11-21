@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import {useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
 import Bridges from './Bridges';
@@ -8,7 +8,7 @@ import {registerUser } from '../../client/apis/users.ts';
 // import Login from './Login.tsx';
 
 export default function Main() {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+  const {  user, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
   const checkAndRegisterUser = async () => {
@@ -76,21 +76,7 @@ export default function Main() {
         </div>
       </Header>
 
-      <div className="auth-section">
-        {isAuthenticated ? (
-          <>
-            <p>
-              Welcome, {user?.given_name} {user?.family_name} ({user?.email}) ({user?.sub})
-            </p>
-            <button onClick={() => logout({ returnTo: window.location.origin })}>
-              Log out
-            </button>
-          </>
-        ) : (
-          <button onClick={() => loginWithRedirect()}>Log in</button>
-
-        )}
-      </div>
+      
 
       <MainContent>
         {/* Display the Bridges component only when authenticated */}
