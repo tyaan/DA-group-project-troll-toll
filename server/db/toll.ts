@@ -5,7 +5,7 @@ export async function addToll(tollData: TollData): Promise<Toll | undefined> {
   return await db('toll_analytics').insert(
     {
       "bridge_id": tollData.bridgeId, 
-      "user_id": tollData.userId, 
+      "user_id": tollData.userId,
       "revenue": tollData.revenue, 
       "timestamp": tollData.timestamp
     }, ['*']
@@ -13,29 +13,40 @@ export async function addToll(tollData: TollData): Promise<Toll | undefined> {
 }
 
 export async function getTolls(): Promise<Toll[] | undefined> {
-   return await db('toll_analytics').select(
-     "bridge_id as bridgeId", 
-     "user_id as userId", 
-     "revenue", 
-     "timestamp"
-   ) as Toll[]
+   return await db('toll_analytics')
+      .leftJoin('users', 'toll_analytics.user_id', 'users.auth0_sub')
+      .select(
+        "bridge_id as bridgeId", 
+        "users.auth0_sub as userId",
+        db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
+        "revenue", 
+        "timestamp"
+      ) as Toll[]
 }
 
 export async function getTollsByBridgeId(bridgeId: number): Promise<Toll[] | undefined> {
-  return await db('toll_analytics').where("bridge_id", bridgeId)
+  return await db('toll_analytics')
+    .leftJoin('users', 'toll_analytics.user_id', 'users.auth0_sub')
+    .where("bridge_id", bridgeId)
     .select(
       "bridge_id as bridgeId", 
-      "user_id as userId", 
+      "users.auth0_sub as userId",
+      db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
       "revenue", 
       "timestamp"
     ) as Toll[]
 }
 
-export async function getTollsByUserId(userId: number): Promise<Toll[] | undefined> {
-  return await db('toll_analytics').where("user_id", userId)
+export async function getTollsByUserAuth0Sub(auth0Sub: string): Promise<Toll[] | undefined> {
+  return await db('toll_analytics')
+    .leftJoin('users', 'toll_analytics.user_id', 'users.auth0_sub')
+    .leftJoin('bridges', 'toll_analytics.bridge_id', 'bridges.id')
+    .where("auth0_sub", auth0Sub)
     .select(
       "bridge_id as bridgeId", 
-      "user_id as userId", 
+      "users.auth0_sub as userId",
+      "bridges.name as bridgeName",
+      db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
       "revenue", 
       "timestamp"
     ) as Toll[]
