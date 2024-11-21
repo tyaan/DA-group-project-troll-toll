@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getBridge } from '../apis/bridge'
 import Header from './Header'
 import MainContent from './MainContent'
