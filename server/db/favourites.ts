@@ -3,12 +3,19 @@ import db from './connection.ts'
 
 
 export async function addFavoriteBridge(userId: FavouriteData, bridgeId: FavouriteData): Promise<void> {
- return await db('favorites').insert({ user_id: userId, bridge_id: bridgeId });
+ return await db('favourites').insert({ user_id: userId, bridge_id: bridgeId });
 }
 
 export async function getFavoriteBridges(userId: number): Promise<{ id: number; name: string }[]> {
-  return await db('favorites')
-    .join('bridges', 'favorites.bridge_id', 'bridges.id')
-    .where('favorites.user_id', userId)
+  return await db('favourites')
+    .join('bridges', 'favourites.bridge_id', 'bridges.id')
+    .where('favourites.user_id', userId)
     .select('bridges.id as id', 'bridges.name as name');
+}
+
+
+export async function removeFavoriteBridge(userId: number, bridgeId: number): Promise<void> {
+  await db('favourites')
+    .where({ user_id: userId, bridge_id: bridgeId })
+    .del()
 }
