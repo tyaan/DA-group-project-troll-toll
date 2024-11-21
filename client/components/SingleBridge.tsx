@@ -1,17 +1,17 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { getBridge } from '../apis/bridge'
 import Header from './Header'
 import MainContent from './MainContent'
 import { useQuery } from '@tanstack/react-query'
 import TollCalculator from './TollCalculator'
 import { BridgeImage } from './BridgeImage'
-import { useAuth0 } from '@auth0/auth0-react' 
-import { addFavorite, removeFavorite, getFavorites } from '../apis/favorites' 
+import { useAuth0 } from '@auth0/auth0-react'
+import { addFavorite, removeFavorite, getFavorites } from '../apis/favorites'
 import { useState, useEffect } from 'react'
 
 export default function SingleBridge() {
   const params = useParams()
-  const { user } = useAuth0() 
+  const { user } = useAuth0()
 
   const {
     data: bridge,
@@ -29,7 +29,7 @@ export default function SingleBridge() {
       const checkIfFavorite = async () => {
         const userId = user.sub
         const favorites = await getFavorites(userId)
-        const isInFavorites = favorites.some(fav => fav.id === bridge.id)
+        const isInFavorites = favorites.some((fav) => fav.id === bridge.id)
         setIsFavorite(isInFavorites)
       }
 
@@ -109,7 +109,7 @@ export default function SingleBridge() {
               }
             </div>
             <div className="navigation-button">
-              <button className="Add-favorite" onClick={handleFavoriteToggle}>
+              <button className="general-btn" onClick={handleFavoriteToggle}>
                 {isFavorite ? 'REMOVE FROM FAVORITE' : 'ADD TO FAVORITE'}
               </button>
             </div>
@@ -120,14 +120,7 @@ export default function SingleBridge() {
         </div>
       </Header>
       <MainContent>
-        {/* Add the "Go Back" button */}
-        <div className="navigation-button">
-          <Link to="/" className="home-button">
-            RETURN HOME
-          </Link>
-        </div>
         <TollCalculator />
-        
       </MainContent>
     </main>
   )
