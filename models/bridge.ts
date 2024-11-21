@@ -11,5 +11,6 @@ export interface BridgeData {
 }
 
 export interface Bridge extends BridgeData {
+  addedByUser: string | null;
   id: number
 }

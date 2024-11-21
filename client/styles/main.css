@@ -7,20 +7,25 @@
 
 nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 20px;
-  height: 100px;
+  height: auto;
   background-color: #9dccf1;
+  gap: 10px;
 }
 
 .navigation-title {
   font-family: 'Bangers', sans-serif;
   flex-grow: 1;
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 main {
@@ -113,18 +118,18 @@ footer {
 
 /* Login & sign up button */
 .login-btn {
-  background-color: #0078d4;
-  color: white;
-  padding: 0.5rem 1.5rem;
+  min-width: 60px;
+  max-width: 120px;
+  text-align: center;
+  background-color: #283629;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
   transition:
     background-color 0.3s,
     box-shadow 0.3s;
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
 }
 
 .login-btn:hover {
@@ -138,27 +143,28 @@ footer {
 
 /* Sign up button */
 .signup-btn {
-  background-color: #ffc505;
-  color: #03045e;
-  padding: 0.5rem 1.5rem;
+  min-width: 60px;
+  max-width: 120px;
+  text-align: center;
+  background-color: #283629;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
   border-radius: 0.375rem;
   border: none;
   cursor: pointer;
   transition:
     background-color 0.3s,
     box-shadow 0.3s;
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
+ 
 }
 
 .signup-btn:hover {
-  background-color: #d29a2b;
+  background-color: #005a8d;
 }
 
 .signup-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #ffc505;
+  box-shadow: 0 0 0 3px #00bfff;
 }
 
 /* General button */
@@ -326,4 +332,55 @@ footer {
 /* Additional spacing between items */
 .bridge-items {
   margin-top: 20px;
+}
+
+/* --- Button Spacing  --- */
+.single-bridge-page {
+  position: relative;
+  padding-bottom: 100px;
+}
+
+/* --- Home Button --- */
+.home-button {
+  position: relative;
+  width: 60px;
+  bottom: 70px;
+  left: auto;
+  background-color: #283629;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.home-button:hover {
+  background-color: #005a8d;
+}
+
+.home-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #00bfff;
+}
+
+.Add-favorite{
+  position: relative;
+  width: 130px;
+  bottom: 0px;
+  right: auto;
+  left: auto;
+  background-color: #283629;
+  color: #ffffff;
+  padding: 10px 0px;
+  text-decoration: none;
+  border-radius: 5px;
+  
+}
+
+.Add-favorite:hover {
+  background-color: #005a8d;
+}
+
+.Add-favoriten:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #00bfff;
 }
