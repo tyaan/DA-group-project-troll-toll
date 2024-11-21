@@ -17,7 +17,8 @@ export async function getTolls(): Promise<Toll[] | undefined> {
       .leftJoin('users', 'toll_analytics.user_id', 'users.auth0_sub')
       .select(
         "bridge_id as bridgeId", 
-        "users.name as userName",
+        "users.auth0_sub as userId",
+        db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
         "revenue", 
         "timestamp"
       ) as Toll[]
@@ -29,7 +30,8 @@ export async function getTollsByBridgeId(bridgeId: number): Promise<Toll[] | und
     .where("bridge_id", bridgeId)
     .select(
       "bridge_id as bridgeId", 
-      "users.name as userName",
+      "users.auth0_sub as userId",
+      db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
       "revenue", 
       "timestamp"
     ) as Toll[]
@@ -41,7 +43,8 @@ export async function getTollsByUserAuth0Sub(auth0Sub: string): Promise<Toll[] |
     .where("auth0_sub", auth0Sub)
     .select(
       "bridge_id as bridgeId", 
-      "users.name as userName",
+      "users.auth0_sub as userId",
+      db.raw('CONCAT(users.name, " ", users.last_name) as userName'),
       "revenue", 
       "timestamp"
     ) as Toll[]

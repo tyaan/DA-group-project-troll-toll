@@ -86,6 +86,13 @@ export default function TollCalculator(){
   }
 
   const renderTime = (timestamp: Date): JSX.Element => {
+    if(!timestamp){
+      return (
+        <div>
+          NA
+        </div>
+      )
+    }
     const date = new Date(timestamp);
     return (
       <div>
