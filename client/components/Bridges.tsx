@@ -11,7 +11,7 @@ export default function Bridges() {
     data: bridges,
     error,
     isLoading,
-  } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)).catch(e => getBridges()) })
+  } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)).catch(() => getBridges()) })
 
   
 
