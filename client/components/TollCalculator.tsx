@@ -16,13 +16,13 @@ export default function TollCalculator(){
   const {id: bridgeId} = useParams()
 
   // GETTING AND DISPLAYING CURRENT TIME FOR TOLL FORM
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState(new Date())
 
   useEffect(() => {
-    const updateSecond = () => setCurrentTime(new Date());
-    const interval = setInterval(updateSecond, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    const updateSecond = () => setCurrentTime(new Date())
+    const interval = setInterval(updateSecond, 1000)
+    return () => clearInterval(interval)
+  }, [currentTime])
   
   const [formState, setFormState] = useState({
     revenue: ''
@@ -49,7 +49,7 @@ export default function TollCalculator(){
   })
 
   const handleAddToll = (evt: FormEvent) => {
-    evt.preventDefault();
+    evt.preventDefault()
 
     if(isNaN(Number(formState.revenue)) || Number(formState.revenue) == 0){
       alert('Revenue must be a number!')
@@ -93,7 +93,7 @@ export default function TollCalculator(){
         </div>
       )
     }
-    const date = new Date(timestamp);
+    const date = new Date(timestamp)
     return (
       <div>
         {`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`}
