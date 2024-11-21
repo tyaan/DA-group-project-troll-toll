@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom'
 import { getBridges } from '../apis/bridge.ts'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
+import { addFavorite, removeFavorite } from '../apis/favorites.ts'
 
 export default function Bridges() {
 
   const auth = useAuth0()
+  const queryClient = useQueryClient()
 
   const {
     data: bridges,
@@ -13,7 +15,12 @@ export default function Bridges() {
     isLoading,
   } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)).catch(() => getBridges()) })
 
-  
+  const {mutate} = useMutation({
+    mutationFn: ({bridgeId, favourite}: {bridgeId: number, favourite: boolean}) => favourite ? addFavorite(auth.user!.sub!, bridgeId) : removeFavorite(auth.user!.sub!, bridgeId),
+    onSuccess: () =>{
+      queryClient.invalidateQueries(['bridges'])
+    }
+  })
 
   if (error) {
     return <p>Your bridges are gone! What a massive error</p>
@@ -26,8 +33,8 @@ export default function Bridges() {
     console.error("Not implemented")
   }
 
-  const favouritesClick = () =>{
-    console.error("Not implemented")
+  const favouritesClick = (bridgeId: number, isFavourite: boolean) =>{
+    mutate({bridgeId, favourite: !isFavourite})
   }
 
   return (
@@ -60,7 +67,7 @@ export default function Bridges() {
               <div className="bridge-col owner-col">{br.activeTroll ?? 'No Troll Operator'}</div>
               <div className="bridge-col actions-col flex justify-center gap-3 items-center">
                 <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}><p>{patrolText}</p></button>
-                <button onClick={favouritesClick} className={'action-button' + (shouldShowFavourite ? '' : ' opacity-0 pointer-events-none')}><p>{favText}</p></button>
+                <button onClick={favouritesClick.bind(null, br.id, br.isFavourited)} className={'action-button' + (shouldShowFavourite ? '' : ' opacity-0 pointer-events-none')}><p>{favText}</p></button>
               </div>
             </div>
           )
