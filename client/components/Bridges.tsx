@@ -3,7 +3,8 @@ import { getBridges } from '../apis/bridge.ts'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 import { addFavorite, removeFavorite } from '../apis/favorites.ts'
-import { updateUser, updateUserV2 } from '../apis/users.ts'
+import { updateUserV2 } from '../apis/users.ts'
+import { UserData } from '../../models/user.ts'
 
 export default function Bridges() {
 
@@ -24,7 +25,7 @@ export default function Bridges() {
   })
 
   const patrolMutation = useMutation({
-    mutationFn: (bridgeId: number | null) => updateUserV2({activeBridge: bridgeId, auth0Sub: auth.user!.sub!}),
+    mutationFn: (bridgeId: number | null) => updateUserV2({activeBridge: bridgeId, auth0Sub: auth.user!.sub!} as unknown as UserData),
     onSuccess: () =>{
       queryClient.invalidateQueries({queryKey :['bridges']})
     }

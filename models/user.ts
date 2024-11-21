@@ -4,12 +4,7 @@ export interface UserData {
   lastName: string;
   email: string;
   picture: string;
-<<<<<<< HEAD
   activeBridge?: number | null;
-  favBridges?: number;
-=======
-  activeBridge?: number;
->>>>>>> dev
   totalToll?: number;
 }
 
