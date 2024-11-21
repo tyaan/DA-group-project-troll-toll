@@ -7,7 +7,6 @@ import * as db from '../db/toll.ts'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-  console.log('Got Here')
   try {
     const tolls: Toll[] | undefined = await db.getTolls()
     res.json(tolls)
@@ -17,10 +16,10 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get('/:user_id', async (req, res) => {
+router.get('/:auth0_sub', async (req, res) => {
   try {
-    const {"user_id": userId} = req.params
-    const tolls: Toll[] | undefined = await db.getTollsByUserId(Number(userId))
+    const {"auth0_sub": auth0Sub} = req.params
+    const tolls: Toll[] | undefined = await db.getTollsByUserAuth0Sub(auth0Sub)
     res.json(tolls)
   }catch (err) {
     console.error(err)
@@ -44,6 +43,7 @@ router.get('/bridge/:bridge_id', async (req, res) => {
 router.patch('/', async (req, res) => {
   try{
     const tollData: TollData = req.body
+    console.log(tollData)
     const newToll: Toll | undefined = await db.addToll(tollData)
     res.json(newToll)
   } catch (err) {

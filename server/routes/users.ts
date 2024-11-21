@@ -1,5 +1,5 @@
 import { Request, Response, Router } from 'express';
-import { addUser, getUserByAuth0Sub, getUserById, updateUser } from '../db/users';  // Assuming the correct path to your db functions
+import { addUser, getUserByAuth0Sub, updateUser } from '../db/users';  // Assuming the correct path to your db functions
 import { User, UserData } from '../../models/user';
 import db from '../db/connection'; 
 

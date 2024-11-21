@@ -1,21 +1,6 @@
 import db from './connection';  // Assuming db is being exported as the default from 'connection'
 import { User, UserData } from '../../models/user';
 
-export async function getUserById(id: number): Promise<User | undefined> {
-  return await db('users')
-    .where('id', id).first()
-    .select(
-      "id",
-      "auth0_sub as auth0Sub",
-      "name", 
-      "last_name as lastName", 
-      "email", 
-      "picture", 
-      "active_bridge as activeBridge", 
-      "total_toll as totalToll"
-    )
-}
-
 export function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> {
   return db('users').where({ auth0_sub }).first();
 }

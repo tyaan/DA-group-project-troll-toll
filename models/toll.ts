@@ -1,9 +1,9 @@
 export interface TollData {
   bridgeId: number, 
-  userId: number,
+  userId: string, // auth0sub
   userName: string,
   revenue: number, 
-  timestamp: string
+  timestamp: Date
 }
 
 export interface Toll extends TollData {
