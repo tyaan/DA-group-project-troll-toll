@@ -120,13 +120,14 @@ export default function SingleBridge() {
         </div>
       </Header>
       <MainContent>
-        <TollCalculator />
         {/* Add the "Go Back" button */}
         <div className="navigation-button">
           <Link to="/" className="home-button">
             RETURN HOME
           </Link>
         </div>
+        <TollCalculator />
+        
       </MainContent>
     </main>
   )
