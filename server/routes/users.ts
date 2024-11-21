@@ -1,10 +1,27 @@
 import { Request, Response, Router } from 'express';
-import { addUser, getUserByAuth0Sub, updateUser } from '../db/users';  // Assuming the correct path to your db functions
+import { addUser, getUserByAuth0Sub, updateUser, getUserIdByAuth0Sub } from '../db/users';  // Assuming the correct path to your db functions
 import { User, UserData } from '../../models/user';
 import db from '../db/connection'; 
 
 
 const router = Router();
+
+
+router.post('/id', async (req, res) => {
+  const { auth0Sub } = req.body
+  try {
+    const userId = await getUserIdByAuth0Sub(auth0Sub)
+    if (!userId) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    res.json({ userId })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'Unable to fetch user ID' })
+  }
+})
+
+
 
 // Route to register a new user
 router.post(  '/register',  async (req: Request<Record<string, never>, Record<string, never>, User>, res: Response) => {

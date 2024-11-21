@@ -1,4 +1,4 @@
-import db from './connection';  // Assuming db is being exported as the default from 'connection'
+import db from './connection'; 
 import { User, UserData } from '../../models/user';
 
 export function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> {
@@ -7,6 +7,11 @@ export function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> 
 
 export async function addUser(user: User): Promise<User[]> {
   return db('users').insert(user).returning('*');
+}
+
+export async function getUserIdByAuth0Sub(auth0Sub: string): Promise<number | null> {
+  const user = await db('users').select('id').where('auth0_sub', auth0Sub).first()
+  return user?.id ?? null
 }
 
 export async function updateUser(userData: UserData): Promise<User> {

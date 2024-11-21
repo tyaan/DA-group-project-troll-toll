@@ -20,7 +20,7 @@ export default function Main() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ auth0Sub: user.sub }),
+        body: JSON.stringify({ auth0Sub: user.sub }), 
       });
 
       const userExists = await userExistsResponse.json();
