@@ -1,5 +1,6 @@
 import request from 'superagent'
 import { User, UserData } from '../../models/users.ts'
+import { UserData as UserData2 } from '../../models/user.ts';
 
 const userURL = '/api/v1/users'
 
@@ -70,6 +71,16 @@ export async function registerUser(userData: UserData): Promise<User> {
 
 
 export async function updateUser(userData: UserData): Promise<User> {
+  try {
+    const res = await request.patch(`${userURL}/update`).send(userData)
+    return res.body
+  } catch (err: unknown) {
+    console.error('Error updating user:', err)
+    throw err
+  }
+}
+
+export async function updateUserV2(userData: UserData2): Promise<User> {
   try {
     const res = await request.patch(`${userURL}/update`).send(userData)
     return res.body
