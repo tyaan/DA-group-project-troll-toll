@@ -3,6 +3,8 @@ import { getBridges } from '../apis/bridge.ts'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 import { addFavorite, removeFavorite } from '../apis/favorites.ts'
+import { updateUserV2 } from '../apis/users.ts'
+import { UserData } from '../../models/user.ts'
 
 export default function Bridges() {
 
@@ -15,10 +17,17 @@ export default function Bridges() {
     isLoading,
   } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)).catch(() => getBridges()) })
 
-  const {mutate} = useMutation({
+  const favMutation = useMutation({
     mutationFn: ({bridgeId, favourite}: {bridgeId: number, favourite: boolean}) => favourite ? addFavorite(auth.user!.sub!, bridgeId) : removeFavorite(auth.user!.sub!, bridgeId),
     onSuccess: () =>{
-      queryClient.invalidateQueries(['bridges'])
+      queryClient.invalidateQueries({queryKey :['bridges']})
+    }
+  })
+
+  const patrolMutation = useMutation({
+    mutationFn: (bridgeId: number | null) => updateUserV2({activeBridge: bridgeId, auth0Sub: auth.user!.sub!} as unknown as UserData),
+    onSuccess: () =>{
+      queryClient.invalidateQueries({queryKey :['bridges']})
     }
   })
 
@@ -29,12 +38,12 @@ export default function Bridges() {
     return <p>Fetching bridges from Auckland...</p>
   }
 
-  const petrolBridgeClick = () =>{
-    console.error("Not implemented")
+  const petrolBridgeClick = (bridgeId: number | null) =>{
+    patrolMutation.mutate(bridgeId)
   }
 
   const favouritesClick = (bridgeId: number, isFavourite: boolean) =>{
-    mutate({bridgeId, favourite: !isFavourite})
+    favMutation.mutate({bridgeId, favourite: !isFavourite})
   }
 
   return (
@@ -66,7 +75,7 @@ export default function Bridges() {
               <div className="bridge-col status-col">{br.activeTroll == null ? 'Inactive' : 'Active'}</div>
               <div className="bridge-col owner-col">{br.activeTroll ?? 'No Troll Operator'}</div>
               <div className="bridge-col actions-col flex justify-center gap-3 items-center">
-                <button onClick={petrolBridgeClick} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}><p>{patrolText}</p></button>
+                <button onClick={() => petrolBridgeClick(auth.user?.sub != br.activeTrollSubId ? br.id : null)} className={'action-button' + (shouldShowPetrol ? '' : ' opacity-0 pointer-events-none')}><p>{patrolText}</p></button>
                 <button onClick={favouritesClick.bind(null, br.id, br.isFavourited)} className={'action-button' + (shouldShowFavourite ? '' : ' opacity-0 pointer-events-none')}><p>{favText}</p></button>
               </div>
             </div>

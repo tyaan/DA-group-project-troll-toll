@@ -102,9 +102,7 @@ export default function SingleBridge() {
               <p className="font-bold">Troll Operator: </p>
               {
                 <p>
-                  {bridge.addedByUser ?? (
-                    <span style={{ fontStyle: 'italic' }}>None</span>
-                  )}
+                  {bridge.activeTroll}
                 </p>
               }
             </div>
