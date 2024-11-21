@@ -1,5 +1,6 @@
 import db from './connection'; 
-import { User, UserData } from '../../models/user';
+import { User } from '../../models/user';
+import { UserData } from '../../models/users';
 
 export function getUserByAuth0Sub(auth0_sub: string): Promise<User | undefined> {
   return db('users').where({ auth0_sub }).first();
@@ -15,16 +16,16 @@ export async function getUserIdByAuth0Sub(auth0Sub: string): Promise<number | nu
 }
 
 export async function updateUser(userData: UserData): Promise<User> {
-  return await db('users').where({"auth0_sub": userData.auth0Sub}).first()
+  return await db('users').where({"auth0_sub": userData.auth0_sub}).first()
     .update({
-      "auth0_sub": userData.auth0Sub, 
+      "auth0_sub": userData.auth0_sub, 
       "name": userData.name, 
-      "last_name": userData.lastName, 
+      "last_name": userData.last_name, 
       "email": userData.email, 
       "picture": userData.picture, 
-      "activeBridge": userData.activeBridge, 
-      "fav_bridges": userData.favBridges, 
-      "total_toll": userData.totalToll
+      "active_bridge": userData.active_bridge, 
+      "fav_bridges": userData.fav_bridges, 
+      "total_toll": userData.total_toll
     }, ['*'])
 }
 

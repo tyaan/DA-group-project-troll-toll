@@ -77,6 +77,8 @@ router.patch('/update', async (req, res) => {
   const userData: UserData = req.body
   try {
     const user = await updateUser(userData)
+    console.log(req.body)
+    console.log(user)
     res.json(user)
   } catch (err) {
     console.error('Error updating user: ', err)

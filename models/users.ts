@@ -17,7 +17,7 @@ export type User = {
     last_name: string;
     email: string;
     picture: string;
-    active_bridge?: number;
+    active_bridge?: number | null;
     fav_bridges?: number;
     total_toll?: number;
   };
