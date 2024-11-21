@@ -301,6 +301,7 @@ footer {
   margin: auto;
   text-align: center;
   width: max-content;
+  font-size: 16px;
 }
 
 .action-button:hover{

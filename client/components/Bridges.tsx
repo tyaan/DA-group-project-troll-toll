@@ -4,13 +4,16 @@ import { useQuery } from '@tanstack/react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 
 export default function Bridges() {
+
+  const auth = useAuth0()
+
   const {
     data: bridges,
     error,
     isLoading,
-  } = useQuery({ queryKey: ['bridges'], queryFn: getBridges })
+  } = useQuery({ queryKey: ['bridges'], queryFn: () => auth.getAccessTokenSilently().then(token => getBridges(token)) })
 
-  const auth = useAuth0()
+  
 
   if (error) {
     return <p>Your bridges are gone! What a massive error</p>
@@ -42,6 +45,7 @@ export default function Bridges() {
 
           const shouldShowPetrol = auth.isAuthenticated && (br.activeTroll == null || auth.user?.sub === br.activeTrollSubId)
           const shouldShowFavourite = true//auth.isAuthenticated
+          console.log(auth.user?.sub)
 
           const patrolText = auth.user?.sub != br.activeTrollSubId ? 'Patrol this bridge' : 'Stop Patrolling'
           const favText = br.isFavourited ? 'Unfavourite' : 'Add to favourites'

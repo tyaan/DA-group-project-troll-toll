@@ -1,7 +1,7 @@
 import db from './connection.ts'
 import { Bridge, BridgeData } from '../../models/bridge.ts'
 
-export async function getBridges(subId: string | null = 1): Promise<Bridge[]> {
+export async function getBridges(subId: string | null = null): Promise<Bridge[]> {
 
   const subquery = db('favourites').count('*')
     .where('favourites.user_id', subId).andWhere('favourites.bridge_id', db.ref('bridges.id')).as('isFavourited')
@@ -21,7 +21,7 @@ export async function getBridges(subId: string | null = 1): Promise<Bridge[]> {
       subquery
     ) as Bridge[]
     bridges.forEach(b => b.isFavourited = Boolean(b.isFavourited))
-    console.log(bridges)
+    //console.log(bridges)
     return bridges
 }
 
