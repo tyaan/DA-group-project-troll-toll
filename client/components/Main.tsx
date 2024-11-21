@@ -76,21 +76,7 @@ export default function Main() {
         </div>
       </Header>
 
-      <div className="auth-section">
-        {isAuthenticated ? (
-          <>
-            <p>
-              Welcome, {user?.given_name} {user?.family_name} ({user?.email}) ({user?.sub})
-            </p>
-            <button onClick={() => logout({ returnTo: window.location.origin })}>
-              Log out
-            </button>
-          </>
-        ) : (
-          <button onClick={() => loginWithRedirect()}>Log in</button>
-
-        )}
-      </div>
+      
 
       <MainContent>
         {/* Display the Bridges component only when authenticated */}
