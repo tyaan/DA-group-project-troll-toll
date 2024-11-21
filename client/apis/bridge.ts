@@ -3,8 +3,8 @@ import { Bridge } from '../../models/bridge.ts'
 
 const bridgeURL = '/api/v1/bridges'
 
-export async function getBridges(): Promise<Bridge[]> {
-  const res = await request.get(bridgeURL)
+export async function getBridges(token?: string): Promise<Bridge[]> {
+  const res = token ? await request.get(bridgeURL).set('Authorization', `Bearer ${token}`) : await request.get(bridgeURL)
   return res.body
 }
 
