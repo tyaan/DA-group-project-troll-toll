@@ -3,6 +3,7 @@ import { Bridge, BridgeData } from '../../models/bridge.ts'
 // import { JwtRequest } from '../auth0.ts'
 
 import * as db from '../db/bridge.ts'
+import { addFavoriteBridge, getFavoriteBridges } from '../db/favourites.ts'
 
 const router = express.Router()
 
@@ -31,7 +32,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).send('Something went wrong')
   }
 })
-
 
 router.post('/', async (req, res) => {
   const newBridge: BridgeData = req.body
@@ -70,6 +70,28 @@ router.delete('/:id', async (req, res) => {
   } catch (error) {
     console.error(error)
     res.status(500).send('Something went wrong')
+  }
+})
+
+/// Add Bridge to favourite ///
+
+router.post('/favorites', async (req, res) => {
+  const { userId, bridgeId } = req.body
+  try {
+    await addFavoriteBridge(userId, bridgeId)
+    res.status(200).send({ success: 'Bridge added to favorites successfully' })
+  } catch (err) {
+    res.status(500).send({ error: 'Sorry, Unable to save favorite bridge' })
+  }
+})
+
+router.get('/favorites', async (req, res) => {
+  const userId = req.query.userId
+  try {
+    const favorites = await getFavoriteBridges(Number(userId))
+    res.status(200).send({ favorites })
+  } catch (err) {
+    res.status(500).send({ error: 'Sorry, Unable to save favorite bridge' })
   }
 })
 
